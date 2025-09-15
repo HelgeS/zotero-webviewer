@@ -1,0 +1,1226 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:link="http://purl.org/rss/1.0/modules/link/"
+ xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+ xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
+    <bib:Article rdf:about="http://arxiv.org/abs/1910.10045">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+           <bib:Journal><dc:title>arXiv:1910.10045 [cs]</dc:title></bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Arrieta</foaf:surname>
+                        <foaf:givenName>Alejandro Barredo</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Díaz-Rodríguez</foaf:surname>
+                        <foaf:givenName>Natalia</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Del Ser</foaf:surname>
+                        <foaf:givenName>Javier</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bennetot</foaf:surname>
+                        <foaf:givenName>Adrien</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tabik</foaf:surname>
+                        <foaf:givenName>Siham</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Barbado</foaf:surname>
+                        <foaf:givenName>Alberto</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>García</foaf:surname>
+                        <foaf:givenName>Salvador</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gil-López</foaf:surname>
+                        <foaf:givenName>Sergio</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Molina</foaf:surname>
+                        <foaf:givenName>Daniel</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Benjamins</foaf:surname>
+                        <foaf:givenName>Richard</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Chatila</foaf:surname>
+                        <foaf:givenName>Raja</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Herrera</foaf:surname>
+                        <foaf:givenName>Francisco</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_4698"/>
+        <link:link rdf:resource="#item_4699"/>
+        <dc:title>Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI</dc:title>
+        <dcterms:abstract>In the last years, Artificial Intelligence (AI) has achieved a notable momentum that may deliver the best of expectations over many application sectors across the field. For this to occur, the entire community stands in front of the barrier of explainability, an inherent problem of AI techniques brought by sub-symbolism (e.g. ensembles or Deep Neural Networks) that were not present in the last hype of AI. Paradigms underlying this problem fall within the so-called eXplainable AI (XAI) field, which is acknowledged as a crucial feature for the practical deployment of AI models. This overview examines the existing literature in the field of XAI, including a prospect toward what is yet to be reached. We summarize previous efforts to define explainability in Machine Learning, establishing a novel definition that covers prior conceptual propositions with a major focus on the audience for which explainability is sought. We then propose and discuss about a taxonomy of recent contributions related to the explainability of different Machine Learning models, including those aimed at Deep Learning methods for which a second taxonomy is built. This literature analysis serves as the background for a series of challenges faced by XAI, such as the crossroads between data fusion and explainability. Our prospects lead toward the concept of Responsible Artificial Intelligence, namely, a methodology for the large-scale implementation of AI methods in real organizations with fairness, model explainability and accountability at its core. Our ultimate goal is to provide newcomers to XAI with a reference material in order to stimulate future research advances, but also to encourage experts and professionals from other disciplines to embrace the benefits of AI in their activity sectors, without any prior bias for its lack of interpretability.</dcterms:abstract>
+        <dc:date>2019-12-26</dc:date>
+        <z:shortTitle>Explainable Artificial Intelligence (XAI)</z:shortTitle>
+        <z:libraryCatalog>arXiv.org</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>http://arxiv.org/abs/1910.10045</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-01-08 15:57:05</dcterms:dateSubmitted>
+        <dc:description>arXiv: 1910.10045
+version: 2</dc:description>
+    </bib:Article>
+    <bib:Memo rdf:about="#item_4698">
+        <rdf:value>Comment: 67 pages, 13 figures, accepted for its publication in Information Fusion</rdf:value>
+    </bib:Memo>
+    <z:Attachment rdf:about="#item_4699">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Arrieta et al_2019_Explainable Artificial Intelligence (XAI) - Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;p xmlns=&quot;http://www.w3.org/1999/xhtml&quot; id=&quot;title&quot;&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;&lt;ul xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;list-style-type: none; padding-left:0px&quot; id=&quot;toc&quot;&gt;&lt;li&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/2&quot;&gt;1 Introduction&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/4&quot;&gt;2 Explainability: What, Why, What For and How?&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/4&quot;&gt;2.1 Terminology Clarification&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/5&quot;&gt;2.2 What?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/7&quot;&gt;2.3 Why?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/7&quot;&gt;2.4 What for?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/10&quot;&gt;2.5 How?&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/10&quot;&gt;2.5.1 Levels of Transparency in Machine Learning Models&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/11&quot;&gt;2.5.2 Post-hoc Explainability Techniques for Machine Learning Models&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/12&quot;&gt;3 Transparent Machine Learning Models&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/13&quot;&gt;3.1 Linear/Logistic Regression&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/14&quot;&gt;3.2 Decision Trees&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/16&quot;&gt;3.3 K-Nearest Neighbors&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/16&quot;&gt;3.4 Rule-based Learning&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/17&quot;&gt;3.5 General Additive Models&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/17&quot;&gt;3.6 Bayesian Models&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/17&quot;&gt;4 Post-hoc Explainability Techniques for Machile Learning Models: Taxonomy, Shallow Models and Deep Learning&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/18&quot;&gt;4.1 Model-agnostic Techniques for Post-hoc Explainability&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/21&quot;&gt;4.2 Post-hoc Explainability in Shallow ML Models&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/21&quot;&gt;4.2.1 Tree Ensembles, Random Forests and Multiple Classifier Systems&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/22&quot;&gt;4.2.2 Support Vector Machines&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/23&quot;&gt;4.3 Explainability in Deep Learning&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/23&quot;&gt;4.3.1 Multi-layer Neural Networks&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/24&quot;&gt;4.3.2 Convolutional Neural Networks&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/27&quot;&gt;4.3.3 Recurrent Neural Networks&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/27&quot;&gt;4.3.4 Hybrid Transparent and Black-box Methods&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/28&quot;&gt;4.4 Alternative Taxonomy of Post-hoc Explainability Techniques for Deep Learning&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/29&quot;&gt;5 XAI: Opportunities, Challenges and blackFuture Research Needs&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/30&quot;&gt;5.1 On the Tradeoff between Interpretability and Performance&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/31&quot;&gt;5.2 On the Concept and Metrics&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/32&quot;&gt;5.3 Challenges to achieve Explainable Deep Learning&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/33&quot;&gt;5.4 blackExplanations for AI Security: XAI and Adversarial Machine Learning&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/33&quot;&gt;5.5 XAI and Output Confidence&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/34&quot;&gt;5.6 blackXAI, Rationale Explanation, and Critical Data Studies&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/34&quot;&gt;5.7 XAI and Theory-guided Data Science&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/35&quot;&gt;5.8 Guidelines for ensuring Interpretable AI Models&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/36&quot;&gt;6 Toward Responsible AI: Principles of Artificial Intelligence, Fairness, Privacy and Data Fusion&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/36&quot;&gt;6.1 Principles of Artificial Intelligence&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/37&quot;&gt;6.2 Fairness and Accountability&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/38&quot;&gt;6.2.1 Fairness blackand Discrimination&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/40&quot;&gt;6.2.2 Accountability&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/41&quot;&gt;6.3 Privacy and Data Fusion&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/41&quot;&gt;6.3.1 Basic Levels of Data Fusion&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/41&quot;&gt;6.3.2 Emerging Data Fusion Approaches&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/42&quot;&gt;6.3.3 Opportunities and Challenges in Privacy and Data Fusion under the Responsible AI Paradigm&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/45&quot;&gt;6.4 Implementing Responsible AI Principles in an Organization&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_YKLAJQLQ/45&quot;&gt;7 Conclusions and Outlook&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</dc:description>
+    </z:Attachment>
+    <rdf:Description rdf:about="https://www.aclweb.org/anthology/W19-8403">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dc:title>Proceedings of the 1st Workshop on Interactive Natural Language Technology for Explainable Artificial Intelligence (NL4XAI 2019)</dc:title>
+                <dc:identifier>DOI 10.18653/v1/W19-8403</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+               <foaf:name>Association for Computational Linguistics</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Clinciu</foaf:surname>
+                        <foaf:givenName>Miruna-Adriana</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hastie</foaf:surname>
+                        <foaf:givenName>Helen</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_4701"/>
+        <link:link rdf:resource="#item_4702"/>
+        <dc:title>A Survey of Explainable AI Terminology</dc:title>
+        <dc:date>2019</dc:date>
+        <z:libraryCatalog>ACLWeb</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://www.aclweb.org/anthology/W19-8403</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-01-29 15:40:19</dcterms:dateSubmitted>
+        <dc:description>tex.ids: Clinciu2019a</dc:description>
+        <bib:pages>8–13</bib:pages>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_4701">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Clinciu_Hastie_2019_A Survey of Explainable AI Terminology.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <z:Attachment rdf:about="#item_4702">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Clinciu_Hastie_2019_A Survey of Explainable AI Terminology.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.aclweb.org/anthology/W19-8403.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-02-13 15:08:00</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://arxiv.org/abs/1806.00069">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+               <dc:title>arXiv:1806.00069 [cs, stat]</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gilpin</foaf:surname>
+                        <foaf:givenName>Leilani H.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bau</foaf:surname>
+                        <foaf:givenName>David</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yuan</foaf:surname>
+                        <foaf:givenName>Ben Z.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bajwa</foaf:surname>
+                        <foaf:givenName>Ayesha</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Specter</foaf:surname>
+                        <foaf:givenName>Michael</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kagal</foaf:surname>
+                        <foaf:givenName>Lalana</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_4704"/>
+        <link:link rdf:resource="#item_4705"/>
+        <dc:title>Explaining Explanations: An Overview of Interpretability of Machine Learning</dc:title>
+        <dcterms:abstract>There has recently been a surge of work in explanatory artificial intelligence (XAI). This research area tackles the important problem that complex machines and algorithms often cannot provide insights into their behavior and thought processes. XAI allows users and parts of the internal system to be more transparent, providing explanations of their decisions in some level of detail. These explanations are important to ensure algorithmic fairness, identify potential bias/problems in the training data, and to ensure that the algorithms perform as expected. However, explanations produced by these systems is neither standardized nor systematically assessed. In an effort to create best practices and identify open challenges, we provide our definition of explainability and show how it can be used to classify existing literature. We discuss why current approaches to explanatory methods especially for deep neural networks are insufficient. Finally, based on our survey, we conclude with suggested future research directions for explanatory artificial intelligence.</dcterms:abstract>
+        <dc:date>2019-02-03</dc:date>
+        <z:shortTitle>Explaining Explanations</z:shortTitle>
+        <z:libraryCatalog>arXiv.org</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>http://arxiv.org/abs/1806.00069</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-01-08 15:56:55</dcterms:dateSubmitted>
+        <dc:description>arXiv: 1806.00069</dc:description>
+    </bib:Article>
+    <bib:Memo rdf:about="#item_4704">
+        <rdf:value>Comment: The 5th IEEE International Conference on Data Science and Advanced Analytics (DSAA 2018). [Research Track]</rdf:value>
+    </bib:Memo>
+    <z:Attachment rdf:about="#item_4705">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Gilpin et al_2019_Explaining Explanations - An Overview of Interpretability of Machine Learning.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;p xmlns=&quot;http://www.w3.org/1999/xhtml&quot; id=&quot;title&quot;&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;&lt;ul xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;list-style-type: none; padding-left:0px&quot; id=&quot;toc&quot;&gt;&lt;li&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/1&quot;&gt;I Introduction&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/2&quot;&gt;II Background and Foundational Concepts&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/2&quot;&gt;II-A What is an Explanation?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/2&quot;&gt;II-B Interpretability vs. Completeness&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/2&quot;&gt;II-C Explainability of Deep Networks&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III Review&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III-A Explanations of Deep Network Processing&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III-A1 Linear Proxy Models&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III-A2 Decision Trees&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III-A3 Automatic-Rule Extraction&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/3&quot;&gt;III-A4 Salience Mapping&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-B Explanations of Deep Network Representations&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-B1 Role of Layers&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-B2 Role of Individual Units&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-B3 Role of Representation Vectors&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-C Explanation-Producing Systems&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/4&quot;&gt;III-C1 Attention Networks&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/5&quot;&gt;III-C2 Disentangled Representations&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/5&quot;&gt;III-C3 Generated Explanations&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/5&quot;&gt;IV Related Work&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/5&quot;&gt;IV-A Interpretability&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/6&quot;&gt;IV-B Explainable AI for HCI&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/6&quot;&gt;IV-C Explanations for Black-Box Models&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/6&quot;&gt;IV-D Explainability in Other Domains&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/7&quot;&gt;V Taxonomy&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/7&quot;&gt;VI Evaluation&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/8&quot;&gt;VI-A Processing&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/8&quot;&gt;VI-B Representation&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/8&quot;&gt;VI-C Explanation-Producing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/8&quot;&gt;VII Conclusions&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_H9NNFSBF/9&quot;&gt;References&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</dc:description>
+    </z:Attachment>
+    <bib:Article rdf:about="http://arxiv.org/abs/1802.01933">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+           <bib:Journal><dc:title>arXiv:1802.01933 [cs]</dc:title></bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Guidotti</foaf:surname>
+                        <foaf:givenName>Riccardo</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Monreale</foaf:surname>
+                        <foaf:givenName>Anna</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ruggieri</foaf:surname>
+                        <foaf:givenName>Salvatore</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Turini</foaf:surname>
+                        <foaf:givenName>Franco</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Pedreschi</foaf:surname>
+                        <foaf:givenName>Dino</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Giannotti</foaf:surname>
+                        <foaf:givenName>Fosca</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_4707"/>
+        <link:link rdf:resource="#item_4708"/>
+        <dc:title>A Survey Of Methods For Explaining Black Box Models</dc:title>
+        <dcterms:abstract>In the last years many accurate decision support systems have been constructed as black boxes, that is as systems that hide their internal logic to the user. This lack of explanation constitutes both a practical and an ethical issue. The literature reports many approaches aimed at overcoming this crucial weakness sometimes at the cost of scarifying accuracy for interpretability. The applications in which black box decision systems can be used are various, and each approach is typically developed to provide a solution for a specific problem and, as a consequence, delineating explicitly or implicitly its own definition of interpretability and explanation. The aim of this paper is to provide a classification of the main problems addressed in the literature with respect to the notion of explanation and the type of black box system. Given a problem definition, a black box type, and a desired explanation this survey should help the researcher to find the proposals more useful for his own work. The proposed classification of approaches to open black box models should also be useful for putting the many research open questions in perspective.</dcterms:abstract>
+        <dc:date>2018-06-21</dc:date>
+        <z:libraryCatalog>arXiv.org</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>http://arxiv.org/abs/1802.01933</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-01-08 15:57:00</dcterms:dateSubmitted>
+        <dc:description>arXiv: 1802.01933</dc:description>
+    </bib:Article>
+    <bib:Memo rdf:about="#item_4707">
+        <rdf:value>&lt;p&gt;Comment: This work is currently under review on an international journal&lt;/p&gt;</rdf:value>
+    </bib:Memo>
+    <z:Attachment rdf:about="#item_4708">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Guidotti et al_2018_A Survey Of Methods For Explaining Black Box Models.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;p xmlns=&quot;http://www.w3.org/1999/xhtml&quot; id=&quot;title&quot;&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;&lt;ul xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;list-style-type: none; padding-left:0px&quot; id=&quot;toc&quot;&gt;&lt;li&gt;&lt;a href=&quot;zotero://open-pdf/3_GT8S4NNN/1&quot;&gt;A Survey Of Methods For Explaining Black Box Models&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</dc:description>
+    </z:Attachment>
+    <rdf:Description rdf:about="urn:isbn:978-1-4503-4232-2">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                   <bib:Series><dc:title>KDD '16</dc:title></bib:Series>
+                </dcterms:isPartOf>
+                <dc:identifier>ISBN 978-1-4503-4232-2</dc:identifier>
+                <dc:title>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</dc:title>
+                <dc:identifier>DOI 10.1145/2939672.2939778</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                        <vcard:locality>San Francisco, California, USA</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Association for Computing Machinery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ribeiro</foaf:surname>
+                        <foaf:givenName>Marco Tulio</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Singh</foaf:surname>
+                        <foaf:givenName>Sameer</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Guestrin</foaf:surname>
+                        <foaf:givenName>Carlos</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_4711"/>
+        <dc:title>&quot;Why Should I Trust You?&quot;: Explaining the Predictions of Any Classifier</dc:title>
+        <dcterms:abstract>Despite widespread adoption, machine learning models remain mostly black boxes. Understanding the reasons behind predictions is, however, quite important in assessing trust, which is fundamental if one plans to take action based on a prediction, or when choosing whether to deploy a new model. Such understanding also provides insights into the model, which can be used to transform an untrustworthy model or prediction into a trustworthy one. In this work, we propose LIME, a novel explanation technique that explains the predictions of any classifier in an interpretable and faithful manner, by learning an interpretable model locally varound the prediction. We also propose a method to explain models by presenting representative individual predictions and their explanations in a non-redundant way, framing the task as a submodular optimization problem. We demonstrate the flexibility of these methods by explaining different models for text (e.g. random forests) and image classification (e.g. neural networks). We show the utility of explanations via novel experiments, both simulated and with human subjects, on various scenarios that require trust: deciding if one should trust a prediction, choosing between models, improving an untrustworthy classifier, and identifying why a classifier should not be trusted.</dcterms:abstract>
+        <dc:date>August 13, 2016</dc:date>
+        <z:shortTitle>&quot;Why Should I Trust You?</z:shortTitle>
+        <z:libraryCatalog>ACM Digital Library</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://doi.org/10.1145/2939672.2939778</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2020-01-29</dcterms:dateSubmitted>
+        <bib:pages>1135–1144</bib:pages>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_4711">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Ribeiro et al_2016_Why Should I Trust You.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;p xmlns=&quot;http://www.w3.org/1999/xhtml&quot; id=&quot;title&quot;&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;&lt;ul xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;list-style-type: none; padding-left:0px&quot; id=&quot;toc&quot;&gt;&lt;li&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/1&quot;&gt;1 Introduction&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/1&quot;&gt;2 The case for explanations&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/3&quot;&gt;3 Local Interpretable Model-Agnostic Explanations&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/3&quot;&gt;3.1 Interpretable Data Representations&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/3&quot;&gt;3.2 Fidelity-Interpretability Trade-off&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/3&quot;&gt;3.3 Sampling for Local Exploration&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/3&quot;&gt;3.4 Sparse Linear Explanations&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/4&quot;&gt;3.5 Example 1: Text classification with SVMs&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/4&quot;&gt;3.6 Example 2: Deep networks for images&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/5&quot;&gt;4 Submodular Pick forExplaining Models&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/6&quot;&gt;5 Simulated User Experiments&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/6&quot;&gt;5.1 Experiment Setup&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/6&quot;&gt;5.2 Are explanations faithful to the model?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/6&quot;&gt;5.3 Should I trust this prediction?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/7&quot;&gt;5.4 Can I trust this model?&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/7&quot;&gt;6 Evaluation with human subjects&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/7&quot;&gt;6.1 Experiment setup&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/7&quot;&gt;6.2 Can users select the best classifier?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/8&quot;&gt;6.3 Can non-experts improve a classifier?&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/8&quot;&gt;6.4 Do explanations lead to insights?&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/9&quot;&gt;7 Related Work&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/10&quot;&gt;8 Conclusion and Future Work&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_U7MHFGP3/10&quot;&gt;9 REFERENCES&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</dc:description>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_5663">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2169-3536"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>Qiaoning</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yang</foaf:surname>
+                        <foaf:givenName>X. Jessie</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Robert</foaf:surname>
+                        <foaf:givenName>Lionel P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5664"/>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Automated vehicle</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Automation</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Bibliographies</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>explanation</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>interaction</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Roads</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Task analysis</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Timing</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>transportation</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Vehicles</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Visualization</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:title>What and When to Explain? A Survey of the Impact of Explanation on Attitudes Toward Adopting Automated Vehicles</dc:title>
+        <dcterms:abstract>Automated vehicles (AV) have the potential to decrease driving-related accidents and traffic congestion and to reduce fuel consumption and carbon emissions. However, because of a lack of trust and acceptance, their widespread adoption is far from certain. One approach researchers have taken to promote trust and acceptance of AVs is to decrease the uncertainty associated with their actions by providing explanations. AV explanations are the reasons the AV provides to make its actions easier to understand. There is now a nascent but rapidly growing body of research on AV explanations. Yet, answers to basic questions like whether or when AV explanations are effective still elude us. To better understand what has been done and what should be done with regard to AV explanations, we present a review of the literature, discuss the findings and identify several important future research directions.</dcterms:abstract>
+        <dc:date>2021</dc:date>
+        <z:shortTitle>What and When to Explain?</z:shortTitle>
+        <z:libraryCatalog>IEEE Xplore</z:libraryCatalog>
+        <bib:pages>159533-159540</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2169-3536">
+        <prism:volume>9</prism:volume>
+        <dc:title>IEEE Access</dc:title>
+        <dc:identifier>DOI 10.1109/ACCESS.2021.3130489</dc:identifier>
+        <dc:identifier>ISSN 2169-3536</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_5664">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Zhang et al. 2021 (published).pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="#item_5665">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dc:title>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Xu</foaf:surname>
+                        <foaf:givenName>Yiran</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yang</foaf:surname>
+                        <foaf:givenName>Xiaoyin</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gong</foaf:surname>
+                        <foaf:givenName>Lihang</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lin</foaf:surname>
+                        <foaf:givenName>Hsuan-Chu</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wu</foaf:surname>
+                        <foaf:givenName>Tz-Ying</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Li</foaf:surname>
+                        <foaf:givenName>Yunsheng</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Vasconcelos</foaf:surname>
+                        <foaf:givenName>Nuno</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5666"/>
+        <dc:title>Explainable Object-Induced Action Decision for Autonomous Vehicles</dc:title>
+        <dc:date>2020-06</dc:date>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5666">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Xu et al. - 2020 - Explainable Object-Induced Action Decision for Aut.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="urn:isbn:978-1-4503-5971-9">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                   <bib:Series><dc:title>CHI EA '19</dc:title></bib:Series>
+                </dcterms:isPartOf>
+                <dc:identifier>ISBN 978-1-4503-5971-9</dc:identifier>
+                <dc:title>Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems</dc:title>
+                <dc:identifier>DOI 10.1145/3290607.3312817</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                       <vcard:locality>New York, NY, USA</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Association for Computing Machinery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wiegand</foaf:surname>
+                        <foaf:givenName>Gesa</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schmidmaier</foaf:surname>
+                        <foaf:givenName>Matthias</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Weber</foaf:surname>
+                        <foaf:givenName>Thomas</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Liu</foaf:surname>
+                        <foaf:givenName>Yuanting</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hussmann</foaf:surname>
+                        <foaf:givenName>Heinrich</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5668"/>
+        <dc:subject>autonomous driving</dc:subject>
+        <dc:subject>explainability</dc:subject>
+        <dc:subject>mental model</dc:subject>
+        <dc:subject>situation awareness</dc:subject>
+        <dc:title>I Drive - You Trust: Explaining Driving Behavior Of Autonomous Cars</dc:title>
+        <dcterms:abstract>Driving in autonomous cars requires trust, especially in case of unexpected driving behavior of the vehicle. This work evaluates mental models that experts and non-expert users have of autonomous driving to provide an explanation of the vehicle's past driving behavior. We identified a target mental model that enhances the user's mental model by adding key components from the mental model experts have. To construct this target mental model and to evaluate a prototype of an explanation visualization we conducted interviews (N=8) and a user study (N=16). The explanation consists of abstract visualizations of different elements, representing the autonomous system's components. We explore the relevance of the explanation's individual elements and their influence on the user's situation awareness. The results show that displaying the detected objects and their predicted motion was most important to understand a situation. After seeing the explanation, the user's level of situation awareness increased significantly.</dcterms:abstract>
+        <dc:date>2019</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://doi.org/10.1145/3290607.3312817</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:description>event-place: Glasgow, Scotland Uk</dc:description>
+        <bib:pages>1–6</bib:pages>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5668">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Wiegand et al. - 2019 - I Drive - You Trust Explaining Driving Behavior O.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="urn:isbn:978-1-4503-7516-0">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                   <bib:Series><dc:title>MobileHCI '20</dc:title></bib:Series>
+                </dcterms:isPartOf>
+                <dc:identifier>ISBN 978-1-4503-7516-0</dc:identifier>
+                <dc:title>22nd International Conference on Human-Computer Interaction with Mobile Devices and Services</dc:title>
+                <dc:identifier>DOI 10.1145/3379503.3403554</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                       <vcard:locality>New York, NY, USA</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Association for Computing Machinery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wiegand</foaf:surname>
+                        <foaf:givenName>Gesa</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Eiband</foaf:surname>
+                        <foaf:givenName>Malin</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Haubelt</foaf:surname>
+                        <foaf:givenName>Maximilian</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hussmann</foaf:surname>
+                        <foaf:givenName>Heinrich</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5675"/>
+        <dc:subject>Autonomous driving.</dc:subject>
+        <dc:subject>Explainable AI</dc:subject>
+        <dc:subject>Unexpected driving behavior</dc:subject>
+        <dc:title>“I’d like an Explanation for That!”Exploring Reactions to Unexpected Autonomous Driving</dc:title>
+        <dcterms:abstract>Autonomous vehicles are complex systems that may behave in unexpected ways. From the drivers’ perspective, this can cause stress and lower trust and acceptance of autonomous driving. Prior work has shown that explanation of system behavior can mitigate these negative effects. Nevertheless, it remains unclear in which situations drivers actually need an explanation and what kind of interaction is relevant to them. Using thematic analysis of real-world experience reports, we first identified 17 situations in which a vehicle behaved unexpectedly. We then conducted a think-aloud study (N = 26) in a driving simulator to validate these situations and enrich them with qualitative insights about drivers’ need for explanation. We identified six categories to describe the main concerns and topics during unexpected driving behavior (emotion and evaluation, interpretation and reason, vehicle capability, interaction, future driving prediction and explanation request times). Based on these categories, we suggest design implications for autonomous vehicles, in particular related to collaboration insights, user mental models and explanation requests.</dcterms:abstract>
+        <dc:date>2020</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://doi.org/10.1145/3379503.3403554</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:description>event-place: Oldenburg, Germany</dc:description>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5675">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Wiegand et al. - 2020 - “I’d like an Explanation for That!”Exploring React.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="urn:isbn:978-1-4503-8096-6">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                   <bib:Series><dc:title>CHI '21</dc:title></bib:Series>
+                </dcterms:isPartOf>
+                <dc:identifier>ISBN 978-1-4503-8096-6</dc:identifier>
+                <dc:title>Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems</dc:title>
+                <dc:identifier>DOI 10.1145/3411764.3446647</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                       <vcard:locality>New York, NY, USA</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Association for Computing Machinery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schneider</foaf:surname>
+                        <foaf:givenName>Tobias</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hois</foaf:surname>
+                        <foaf:givenName>Joana</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Rosenstein</foaf:surname>
+                        <foaf:givenName>Alischa</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ghellal</foaf:surname>
+                        <foaf:givenName>Sabiha</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Theofanou-Fülbier</foaf:surname>
+                        <foaf:givenName>Dimitra</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gerlicher</foaf:surname>
+                        <foaf:givenName>Ansgar R.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5683"/>
+        <dc:subject>autonomous driving</dc:subject>
+        <dc:subject>explainable artificial intelligence</dc:subject>
+        <dc:subject>user experience</dc:subject>
+        <dc:title>ExplAIn Yourself! Transparency for Positive UX in Autonomous Driving</dc:title>
+        <dcterms:abstract>In a fully autonomous driving situation, passengers hand over the steering control to a highly automated system. Autonomous driving behaviour may lead to confusion and negative user experience. When establishing such new technology, the user’s acceptance and understanding are crucial factors regarding success and failure. Using a driving simulator and a mobile application, we evaluated if system transparency during and after the interaction can increase the user experience and subjective feeling of safety and control. We contribute an initial guideline for autonomous driving experience design, bringing together the areas of user experience, explainable artificial intelligence and autonomous driving. The AVAM questionnaire, UEQ-S and interviews show that explanations during or after the ride help turn a negative user experience into a neutral one, which might be due to the increased feeling of control. However, we did not detect an effect for combining explanations during and after the ride.</dcterms:abstract>
+        <dc:date>2021</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://doi.org/10.1145/3411764.3446647</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:description>event-place: Yokohama, Japan</dc:description>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5683">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Full Text</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://dl.acm.org/doi/pdf/10.1145/3411764.3446647</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-05-10 06:13:27</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_5684">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>23</prism:volume>
+                <dc:title>IEEE Transactions on Intelligent Transportation Systems</dc:title>
+                <dc:identifier>DOI 10.1109/TITS.2021.3122865</dc:identifier>
+                <prism:number>8</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Omeiza</foaf:surname>
+                        <foaf:givenName>Daniel</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Webb</foaf:surname>
+                        <foaf:givenName>Helena</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jirotka</foaf:surname>
+                        <foaf:givenName>Marina</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kunze</foaf:surname>
+                        <foaf:givenName>Lars</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5685"/>
+        <dc:title>Explanations in Autonomous Driving: A Survey</dc:title>
+        <dc:date>2022</dc:date>
+        <bib:pages>10142-10162</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_5685">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Full Text</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://ora.ox.ac.uk/objects/uuid:90eab5c0-de54-4f71-b494-908a5c1e5c20/files/ssn009z60m</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-05-10 05:38:20</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="#item_5704">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dc:title>2021 IEEE Intelligent Vehicles Symposium (IV)</dc:title>
+                <dc:identifier>DOI 10.1109/IV48863.2021.9575917</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Omeiza</foaf:surname>
+                        <foaf:givenName>Daniel</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Web</foaf:surname>
+                        <foaf:givenName>Helena</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jirotka</foaf:surname>
+                        <foaf:givenName>Marina</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kunze</foaf:surname>
+                        <foaf:givenName>Lars</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5705"/>
+        <dc:title>Towards Accountability: Providing Intelligible Explanations in Autonomous Driving</dc:title>
+        <dc:date>2021</dc:date>
+        <bib:pages>231-237</bib:pages>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5705">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Submitted Version</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://ora.ox.ac.uk/objects/uuid:dbaa1276-1083-4b64-93c1-8c4635c89d2b/download_file?safe_filename=Omeiza_et_al_2021_towards_accountability_providing.pdf&amp;file_format=pdf&amp;type_of_work=Conference+item</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-05-10 05:54:43</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_5714">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>161</prism:volume>
+                <dc:title>Technological Forecasting and Social Change</dc:title>
+                <dc:identifier>DOI 10.1016/j.techfore.2020.120319</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Nastjuk</foaf:surname>
+                        <foaf:givenName>Ilja</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Herrenkind</foaf:surname>
+                        <foaf:givenName>Bernd</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Marrone</foaf:surname>
+                        <foaf:givenName>Mauricio</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Brendel</foaf:surname>
+                        <foaf:givenName>Alfred</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kolbe</foaf:surname>
+                        <foaf:givenName>Lutz</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5715"/>
+        <dc:title>What drives the acceptance of autonomous driving? An investigation of acceptance factors from an end-user's perspective</dc:title>
+        <dc:date>2020-10</dc:date>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_5715">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Full Text</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.sciencedirect.com/science/article/pii/S0040162520311458/pdfft?md5=9acbf0183f3219de88e3d601c6aa0693&amp;pid=1-s2.0-S0040162520311458-main.pdf&amp;isDTMRedir=Y</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-05-18 06:35:40</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="http://arxiv.org/abs/1809.04843">
+        <z:itemType>preprint</z:itemType>
+        <dc:publisher>
+           <foaf:Organization><foaf:name>arXiv</foaf:name></foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Codevilla</foaf:surname>
+                        <foaf:givenName>Felipe</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>López</foaf:surname>
+                        <foaf:givenName>Antonio M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Koltun</foaf:surname>
+                        <foaf:givenName>Vladlen</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dosovitskiy</foaf:surname>
+                        <foaf:givenName>Alexey</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_5717"/>
+        <link:link rdf:resource="#item_5718"/>
+        <dc:subject>
+            <z:AutomaticTag>
+                <rdf:value>Computer Science - Computer Vision and Pattern Recognition</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:title>On Offline Evaluation of Vision-based Driving Models</dc:title>
+        <dcterms:abstract>Autonomous driving models should ideally be evaluated by deploying them on a ﬂeet of physical vehicles in the real world. Unfortunately, this approach is not practical for the vast majority of researchers. An attractive alternative is to evaluate models ofﬂine, on a pre-collected validation dataset with ground truth annotation. In this paper, we investigate the relation between various online and ofﬂine metrics for evaluation of autonomous driving models. We ﬁnd that ofﬂine prediction error is not necessarily correlated with driving quality, and two models with identical prediction error can differ dramatically in their driving performance. We show that the correlation of ofﬂine evaluation with driving quality can be signiﬁcantly improved by selecting an appropriate validation dataset and suitable ofﬂine metrics.</dcterms:abstract>
+        <dc:date>2018-09-13</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>arXiv.org</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>http://arxiv.org/abs/1809.04843</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-03-31 13:36:26</dcterms:dateSubmitted>
+        <dc:description>arXiv:1809.04843 [cs]</dc:description>
+        <prism:number>arXiv:1809.04843</prism:number>
+    </rdf:Description>
+    <bib:Memo rdf:about="#item_5717">
+       <rdf:value>Comment: Published at the ECCV 2018 conference</rdf:value>
+    </bib:Memo>
+    <z:Attachment rdf:about="#item_5718">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Codevilla et al_2018_On Offline Evaluation of Vision-based Driving Models.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://arxiv.org/pdf/1809.04843.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-03-31 13:36:23</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <rdf:Description rdf:about="https://doi.org/10.1109/ITSC55140.2022.9921776">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dc:title>2022 IEEE 25th International Conference on Intelligent Transportation Systems (ITSC)</dc:title>
+                <dc:identifier>DOI 10.1109/ITSC55140.2022.9921776</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                       <vcard:locality>Macau, China</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>IEEE Press</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ramakrishna</foaf:surname>
+                        <foaf:givenName>Shreyas</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Luo</foaf:surname>
+                        <foaf:givenName>Baiting</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kuhn</foaf:surname>
+                        <foaf:givenName>Christopher B.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Karsai</foaf:surname>
+                        <foaf:givenName>Gabor</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dubey</foaf:surname>
+                        <foaf:givenName>Abhishek</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5720"/>
+        <dc:title>ANTI-CARLA: An Adversarial Testing Framework for Autonomous Vehicles in CARLA</dc:title>
+        <dcterms:abstract>Despite recent advances in autonomous driving systems, accidents such as the fatal Uber crash in 2018 show these systems are still susceptible to edge cases. Such systems must be thoroughly tested and validated before being deployed in the real world to avoid such events. Testing in open-world scenarios can be difficult, time-consuming, and expensive. These challenges can be addressed by using driving simulators such as CARLA instead. A key part of such tests is adversarial testing, in which the goal is to find scenarios that lead to failures of the given system. While several independent efforts in testing have been made, a well-established testing framework that enables adversarial testing has yet to be made available for CARLA. We therefore propose ANTI-CARLA, an automated testing framework in CARLA for simulating adversarial weather conditions (e.g., heavy rain) and sensor faults (e.g., camera occlusion) that fail the system. The operating conditions in which a given system should be tested are specified in a scenario description language. The framework offers an efficient search mechanism that searches for adversarial operating conditions that will fail the tested system. In this way, ANTI-CARLA extends the CARLA simulator with the capability of performing adversarial testing on any given driving pipeline. We use ANTI-CARLA to test the driving pipeline trained with Learning By Cheating (LBC) approach. The simulation results demonstrate that ANTI-CARLA can effectively and automatically find a range of failure cases despite LBC reaching an accuracy of 100&amp;#x0025; in the CARLA benchmark.</dcterms:abstract>
+        <dc:date>Oktober 8, 2022</dc:date>
+        <z:shortTitle>ANTI-CARLA</z:shortTitle>
+        <z:libraryCatalog>ACM Digital Library</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://doi.org/10.1109/ITSC55140.2022.9921776</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-03-31</dcterms:dateSubmitted>
+        <bib:pages>2620–2627</bib:pages>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_5720">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Ramakrishna et al_2022_ANTI-CARLA.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://arxiv.org/pdf/2208.06309</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-03-31 13:32:51</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;p xmlns=&quot;http://www.w3.org/1999/xhtml&quot; id=&quot;title&quot;&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;&lt;ul xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;list-style-type: none; padding-left:0px&quot; id=&quot;toc&quot;&gt;&lt;li&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/1&quot;&gt;I Introduction&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/2&quot;&gt;II Related Work&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/2&quot;&gt;II-A Test Case Description and Sampling&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/2&quot;&gt;II-B Testing Frameworks&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/2&quot;&gt;II-C Autonomous Driving Pipelines&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/3&quot;&gt;III Problem Formulation&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/3&quot;&gt;IV ANTI-CARLA Framework&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/3&quot;&gt;IV-A Scenario Generator&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/4&quot;&gt;IV-B Adapter Glue Code&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/5&quot;&gt;IV-C Scoring Function&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/5&quot;&gt;IV-D Samplers&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/5&quot;&gt;V Evaluation&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:12px&quot;&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/5&quot;&gt;V-A Simulation Setup&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/6&quot;&gt;V-A.1 Comparison Metrics&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:8px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/6&quot;&gt;V-B Results&lt;/a&gt;&lt;ul style=&quot;list-style-type: none; padding-left:24px&quot;&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/6&quot;&gt;V-B.1 Visualization&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/6&quot;&gt;V-B.2 Sampler Comparison&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/7&quot;&gt;V-B.3 Town-wise Infractions&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/7&quot;&gt;V-B.4 Controller Comparison&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/8&quot;&gt;V-B.5 Recommendations&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/8&quot;&gt;VI Conclusion&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot;padding-top:4px&quot;&gt;&lt;a href=&quot;zotero://open-pdf/3_Y7RHDAV5/8&quot;&gt;References&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</dc:description>
+    </z:Attachment>
+    <rdf:Description rdf:about="https://openreview.net/forum?id=ZjN2AuXgu1">
+        <z:itemType>conferencePaper</z:itemType>
+        <dcterms:isPartOf>
+           <bib:Journal></bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Xu</foaf:surname>
+                        <foaf:givenName>Shengjie</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Mi</foaf:surname>
+                        <foaf:givenName>Lan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gilpin</foaf:surname>
+                        <foaf:givenName>Leilani H.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>A Framework for Generating Dangerous Scenes for Testing Robustness</dc:title>
+        <dcterms:abstract>Benchmark datasets for autonomous driving, such as KITTI, nuScenes, Argoverse, or Waymo are realistic but designed to be faultless. These datasets do not contain errors, difficult driving maneuvers, or other corner cases. We propose a framework for perturbing autonomous vehicle datasets, the DANGER framework, which generates edge-case images on top of current autonomous driving datasets. The input to DANGER are photorealistic datasets from real driving scenarios. We present the DANGER algorithm for vehicle position manipulation and the interface towards the renderer module, and present five scenario-level dangerous primitives generation applied to the virtual KITTI and virtual KITTI 2 datasets. Our experiments prove that DANGER can be used as a framework for expanding the current datasets to cover generative while realistic and anomalous corner cases.</dcterms:abstract>
+        <dc:date>2022/11/23</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>openreview.net</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://openreview.net/forum?id=ZjN2AuXgu1</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-03-27 15:15:36</dcterms:dateSubmitted>
+        <bib:presentedAt>
+            <bib:Conference>
+                <dc:title>Progress and Challenges in Building Trustworthy Embodied AI</dc:title>
+            </bib:Conference>
+        </bib:presentedAt>
+    </rdf:Description>
+    <bib:Article rdf:about="#item_5931">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1939-3520"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Deng</foaf:surname>
+                        <foaf:givenName>Yao</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zheng</foaf:surname>
+                        <foaf:givenName>Xi</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>Tianyi</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Liu</foaf:surname>
+                        <foaf:givenName>Huai</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lou</foaf:surname>
+                        <foaf:givenName>Guannan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kim</foaf:surname>
+                        <foaf:givenName>Miryung</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Chen</foaf:surname>
+                        <foaf:givenName>Tsong Yueh</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_5932"/>
+        <dc:title>A Declarative Metamorphic Testing Framework for Autonomous Driving</dc:title>
+        <dcterms:abstract>Autonomous driving has gained much attention from both industry and academia. Currently, Deep Neural Networks (DNNs) are widely used for perception and control in autonomous driving. However, several fatal accidents caused by autonomous vehicles have raised serious safety concerns about autonomous driving models. Some recent studies have successfully used the metamorphic testing technique to detect thousands of potential issues in some popularly used autonomous driving models. However, prior study is limited to a small set of metamorphic relations, which do not reflect rich, real-world traffic scenarios and are also not customizable. This paper presents a novel declarative rule-based metamorphic testing framework called RMT. RMT provides a rule template with natural language syntax, allowing users to flexibly specify an enriched set of testing scenarios based on real-world traffic rules and domain knowledge. RMT automatically parses human-written rules to metamorphic relations using an NLP-based rule parser referring to an ontology list and generates test cases with a variety of image transformation engines. We evaluated RMT on three autonomous driving models. With an enriched set of metamorphic relations, RMT detected a significant number of abnormal model predictions that were not detected by prior work. Through a large-scale human study on Amazon Mechanical Turk, we further confirmed the authenticity of test cases generated by RMT and the validity of detected abnormal model predictions.</dcterms:abstract>
+        <dc:date>2022</dc:date>
+        <z:libraryCatalog>IEEE Xplore</z:libraryCatalog>
+        <dc:description>Conference Name: IEEE Transactions on Software Engineering</dc:description>
+        <bib:pages>1-20</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1939-3520">
+        <dc:title>IEEE Transactions on Software Engineering</dc:title>
+        <dc:identifier>DOI 10.1109/TSE.2022.3206427</dc:identifier>
+        <dc:identifier>ISSN 1939-3520</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_5932">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Deng et al_2022_A Declarative Metamorphic Testing Framework for Autonomous Driving.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://arxiv.org/pdf/2012.10672</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-01-31 14:09:55</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <z:Collection rdf:about="#collection_124">
+       <dc:title>1 - Human Agency and Oversight</dc:title>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_125">
+        <dc:title>2 - Technical Robustness and Safety</dc:title>
+        <dcterms:hasPart rdf:resource="http://arxiv.org/abs/1809.04843"/>
+        <dcterms:hasPart rdf:resource="https://doi.org/10.1109/ITSC55140.2022.9921776"/>
+        <dcterms:hasPart rdf:resource="https://openreview.net/forum?id=ZjN2AuXgu1"/>
+        <dcterms:hasPart rdf:resource="#item_5931"/>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_126">
+       <dc:title>3 - Privacy and Data Governance</dc:title>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_127">
+        <dc:title>4 - Transparency</dc:title>
+        <dcterms:hasPart rdf:resource="http://arxiv.org/abs/1910.10045"/>
+        <dcterms:hasPart rdf:resource="https://www.aclweb.org/anthology/W19-8403"/>
+        <dcterms:hasPart rdf:resource="http://arxiv.org/abs/1806.00069"/>
+        <dcterms:hasPart rdf:resource="http://arxiv.org/abs/1802.01933"/>
+        <dcterms:hasPart rdf:resource="urn:isbn:978-1-4503-4232-2"/>
+        <dcterms:hasPart rdf:resource="#item_5663"/>
+        <dcterms:hasPart rdf:resource="#item_5665"/>
+        <dcterms:hasPart rdf:resource="urn:isbn:978-1-4503-5971-9"/>
+        <dcterms:hasPart rdf:resource="urn:isbn:978-1-4503-7516-0"/>
+        <dcterms:hasPart rdf:resource="urn:isbn:978-1-4503-8096-6"/>
+        <dcterms:hasPart rdf:resource="#item_5684"/>
+        <dcterms:hasPart rdf:resource="#item_5704"/>
+        <dcterms:hasPart rdf:resource="#item_5714"/>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_128">
+       <dc:title>5 - Diversity, Non-Discrimination and Fairness</dc:title>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_129">
+       <dc:title>6 - Societal and Environmental Well-Being</dc:title>
+    </z:Collection>
+    <z:Collection rdf:about="#collection_130">
+       <dc:title>7 - Accountability</dc:title>
+    </z:Collection>
+</rdf:RDF>

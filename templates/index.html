@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default('Literature Collection Webviewer') }}</title>
+    <meta name="description" content="Interactive browser for academic literature collections exported from Zotero">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header with title and search -->
+        <header class="app-header" role="banner">
+            <div class="header-content">
+                <h1 class="app-title">{{ collection_title | default('Literature Collection') }}</h1>
+                <div class="search-container">
+                    <label for="search-input" class="visually-hidden">Search literature</label>
+                    <input 
+                        type="search" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Search titles, authors, abstracts..."
+                        aria-label="Search literature collection"
+                    >
+                    <button type="button" class="search-clear" aria-label="Clear search" style="display: none;">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <main class="app-main" role="main">
+            <!-- Sidebar with collection tree -->
+            <aside class="sidebar" role="navigation" aria-label="Collection navigation">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">Collections</h2>
+                    <button type="button" class="sidebar-toggle" aria-label="Toggle collection sidebar">
+                        <span class="hamburger-icon" aria-hidden="true">☰</span>
+                    </button>
+                </div>
+                <div class="collection-tree-container">
+                    <div id="collection-tree" class="collection-tree" role="tree" aria-label="Literature collections">
+                        <!-- Collection tree will be populated by JavaScript -->
+                        <div class="loading-indicator" aria-live="polite">Loading collections...</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content area with breadcrumbs and bibliography -->
+            <section class="content-area">
+                <!-- Breadcrumb navigation -->
+                <nav class="breadcrumb-nav" aria-label="Collection breadcrumb">
+                    <ol id="breadcrumb-list" class="breadcrumb-list" role="list">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="breadcrumb-link" data-collection-id="">All Collections</a>
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Results summary and controls -->
+                <div class="results-header">
+                    <div class="results-info">
+                        <span id="results-count" class="results-count" aria-live="polite">
+                            Loading bibliography...
+                        </span>
+                        <div class="filter-controls" id="filter-controls" style="display: none;">
+                            <button type="button" id="clear-filters" class="filter-btn clear-filters" aria-label="Clear all filters">
+                                Clear Filters
+                            </button>
+                            <button type="button" id="share-filters" class="filter-btn share-filters" aria-label="Share current view">
+                                Share View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <button type="button" class="view-toggle" data-view="table" aria-pressed="true">
+                            Table View
+                        </button>
+                        <button type="button" class="view-toggle" data-view="cards" aria-pressed="false">
+                            Card View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bibliography table -->
+                <div class="bibliography-container">
+                    <div class="table-wrapper">
+                        <table id="bibliography-table" class="bibliography-table" role="table" aria-label="Literature bibliography">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sortable" data-sort="title" role="columnheader" aria-sort="none" tabindex="0">
+                                        <span class="header-text">Title</span>
+                                        <span class="sort-indicator" aria-hidden="true"></span>
+                                    </th>
+                                    <th class="sortable" data-sort="authors" role="columnheader" aria-sort="none" tabindex="0">
+                                        <span class="header-text">Authors</span>
+                                        <span class="sort-indicator" aria-hidden="true"></span>
+                                    </th>
+                                    <th class="sortable" data-sort="year" role="columnheader" aria-sort="none" tabindex="0">
+                                        <span class="header-text">Year</span>
+                                        <span class="sort-indicator" aria-hidden="true"></span>
+                                    </th>
+                                    <th class="sortable" data-sort="venue" role="columnheader" aria-sort="none" tabindex="0">
+                                        <span class="header-text">Venue</span>
+                                        <span class="sort-indicator" aria-hidden="true"></span>
+                                    </th>
+                                    <th class="sortable" data-sort="type" role="columnheader" aria-sort="none" tabindex="0">
+                                        <span class="header-text">Type</span>
+                                        <span class="sort-indicator" aria-hidden="true"></span>
+                                    </th>
+                                    <th role="columnheader">
+                                        <span class="header-text">Actions</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="bibliography-tbody">
+                                <!-- Bibliography items will be populated by JavaScript -->
+                                <tr class="loading-row">
+                                    <td colspan="6" class="loading-cell">
+                                        <div class="loading-indicator" aria-live="polite">Loading bibliography items...</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination controls -->
+                    <nav class="pagination-nav" aria-label="Bibliography pagination">
+                        <div class="pagination-info">
+                            <span id="pagination-info" aria-live="polite"></span>
+                        </div>
+                        <div class="pagination-controls">
+                            <button type="button" id="prev-page" class="pagination-btn" disabled aria-label="Previous page">
+                                ← Previous
+                            </button>
+                            <div class="page-numbers" role="group" aria-label="Page numbers">
+                                <!-- Page numbers will be populated by JavaScript -->
+                            </div>
+                            <button type="button" id="next-page" class="pagination-btn" disabled aria-label="Next page">
+                                Next →
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- Card view (alternative to table) -->
+                <div id="bibliography-cards" class="bibliography-cards" style="display: none;">
+                    <!-- Card items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for detailed item view -->
+        <div id="item-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-overlay" aria-hidden="true"></div>
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2 id="modal-title" class="modal-title">Item Details</h2>
+                    <button type="button" class="modal-close" aria-label="Close modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </header>
+                <div class="modal-body">
+                    <!-- Item details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+            <div class="loading-spinner" role="status" aria-label="Loading">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Error message container -->
+        <div id="error-container" class="error-container" role="alert" aria-live="assertive" style="display: none;">
+            <div class="error-content">
+                <h3 class="error-title">Error</h3>
+                <p class="error-message"></p>
+                <button type="button" class="error-dismiss">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
