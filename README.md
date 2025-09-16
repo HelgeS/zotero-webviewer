@@ -11,6 +11,8 @@ A static website generator that transforms Zotero RDF exports into interactive, 
 - **Static Deployment**: No server required - deploy anywhere
 - **Performance Optimized**: Virtual scrolling and search indexing for large collections
 - **Production Ready**: Minification, compression, and deployment automation
+- **Comprehensive Testing**: 150+ tests covering all functionality with real data scenarios
+- **Accessibility Compliant**: Semantic markup, keyboard navigation, and screen reader support
 
 ## Quick Start
 
@@ -179,9 +181,18 @@ literature-webviewer/
 │   ├── index.html              # Main HTML template
 │   ├── styles.css              # CSS styles
 │   └── app.js                  # JavaScript application
+├── tests/                       # Comprehensive test suite (150+ tests)
+│   ├── conftest.py             # Test fixtures and configuration
+│   ├── test_rdf_parser.py      # RDF parsing unit tests
+│   ├── test_data_transformer.py # Data transformation tests
+│   ├── test_collection_builder.py # Collection hierarchy tests
+│   ├── test_json_generator.py   # JSON generation tests
+│   ├── test_integration.py      # Integration and E2E tests
+│   └── test_web_interface.py    # Web interface tests
 ├── .github/workflows/           # GitHub Actions
 │   └── deploy.yml              # Automatic deployment
 ├── build.py                    # Simple build script
+├── pytest.ini                 # Test configuration
 ├── pyproject.toml              # Project configuration
 └── README.md                   # This file
 ```
@@ -211,12 +222,69 @@ git clone https://github.com/yourusername/literature-webviewer.git
 cd literature-webviewer
 uv sync
 
-# Run tests (when available)
+# Run the comprehensive test suite
 uv run pytest
+
+# Run tests with coverage
+uv run pytest --cov=src/literature_webviewer
 
 # Build development version
 uv run build --input sample.rdf --verbose
 ```
+
+### Test Suite
+
+The project includes a comprehensive test suite with **150+ tests** covering:
+
+#### Unit Tests
+- **RDF Parser**: Tests for parsing various Zotero export formats, data extraction, and validation
+- **Data Transformer**: Tests for data normalization, type conversion, and error handling
+- **Collection Builder**: Tests for hierarchical collection building and item assignment
+- **JSON Generator**: Tests for optimized JSON generation and file validation
+
+#### Integration Tests
+- **Build Pipeline**: Complete RDF-to-website build process testing
+- **Component Integration**: Tests for data flow between all components
+- **Error Recovery**: Tests for handling malformed data and build failures
+- **Performance**: Tests for large dataset handling and memory usage
+
+#### End-to-End Tests
+- **Real Zotero Data**: Tests using actual Zotero export files
+- **Web Interface**: Tests for HTML/CSS/JS generation and functionality
+- **Accessibility**: Tests for semantic markup and keyboard navigation
+- **Responsive Design**: Tests for mobile and desktop compatibility
+
+#### Running Tests
+
+```bash
+# Run all tests
+uv run pytest
+
+# Run specific test categories
+uv run pytest tests/test_rdf_parser.py          # Unit tests
+uv run pytest tests/test_integration.py         # Integration tests
+uv run pytest tests/test_web_interface.py       # Web interface tests
+
+# Run with verbose output
+uv run pytest -v
+
+# Run with coverage report
+uv run pytest --cov=src/literature_webviewer --cov-report=html
+
+# Quick test run
+uv run pytest -q
+```
+
+The test suite uses real RDF data instead of mocking for more reliable and maintainable tests.
+
+#### Quality Assurance
+
+- **Real Data Testing**: All tests use actual Zotero RDF exports for realistic scenarios
+- **Cross-Platform**: Tests run on multiple Python versions and operating systems
+- **Performance Validated**: Large dataset tests ensure scalability
+- **Accessibility Verified**: Web interface tests include accessibility compliance
+- **Error Handling**: Comprehensive error condition and edge case testing
+- **Integration Verified**: End-to-end pipeline testing with real workflows
 
 ### Making Changes
 
@@ -250,6 +318,7 @@ uv run build --input sample.rdf --verbose
 1. **Validate your RDF**: `literature-webviewer validate-rdf --input library.rdf`
 2. **Use verbose mode**: Add `--verbose` to any command for detailed output
 3. **Check logs**: Review build output for specific error messages
+4. **Run tests**: Use `uv run pytest -v` to verify your installation and identify issues
 
 ## Contributing
 
