@@ -8,7 +8,7 @@ from typing import Dict, Any, List
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF, DC, DCTERMS, FOAF
 
-from literature_webviewer.data_transformer import BibliographyItem, Collection, Author, Attachment, ItemType
+from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author, Attachment, ItemType
 
 
 # Define Zotero-specific namespaces for test data

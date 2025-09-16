@@ -3,11 +3,11 @@
 import json
 import pytest
 from pathlib import Path
-from literature_webviewer.json_generator import (
+from zotero_webviewer.json_generator import (
     JSONGenerator,
     JSONGenerationError
 )
-from literature_webviewer.data_transformer import BibliographyItem, Collection, Author, ItemType
+from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author, ItemType
 
 
 class TestJSONGenerator:
@@ -374,8 +374,8 @@ class TestJSONGeneratorErrorHandling:
     
     def test_generate_bibliography_json_with_real_data(self, temp_dir, sample_rdf_file):
         """Test bibliography JSON generation with real RDF data."""
-        from literature_webviewer.rdf_parser import RDFParser
-        from literature_webviewer.data_transformer import DataTransformer
+        from zotero_webviewer.rdf_parser import RDFParser
+        from zotero_webviewer.data_transformer import DataTransformer
         
         # Parse real RDF data
         parser = RDFParser()
@@ -401,9 +401,9 @@ class TestJSONGeneratorErrorHandling:
     
     def test_generate_collections_json_with_real_data(self, temp_dir, sample_rdf_file):
         """Test collections JSON generation with real RDF data."""
-        from literature_webviewer.rdf_parser import RDFParser
-        from literature_webviewer.data_transformer import DataTransformer
-        from literature_webviewer.collection_builder import CollectionHierarchyBuilder
+        from zotero_webviewer.rdf_parser import RDFParser
+        from zotero_webviewer.data_transformer import DataTransformer
+        from zotero_webviewer.collection_builder import CollectionHierarchyBuilder
         
         # Parse real RDF data
         parser = RDFParser()
@@ -433,8 +433,8 @@ class TestJSONGeneratorErrorHandling:
     
     def test_generate_search_index_with_real_data(self, temp_dir, sample_rdf_file):
         """Test search index generation with real RDF data."""
-        from literature_webviewer.rdf_parser import RDFParser
-        from literature_webviewer.data_transformer import DataTransformer
+        from zotero_webviewer.rdf_parser import RDFParser
+        from zotero_webviewer.data_transformer import DataTransformer
         
         # Parse real RDF data
         parser = RDFParser()
@@ -460,9 +460,9 @@ class TestJSONGeneratorErrorHandling:
     
     def test_generate_combined_data_with_real_data(self, temp_dir, sample_rdf_file):
         """Test combined data generation with real RDF data."""
-        from literature_webviewer.rdf_parser import RDFParser
-        from literature_webviewer.data_transformer import DataTransformer
-        from literature_webviewer.collection_builder import CollectionHierarchyBuilder
+        from zotero_webviewer.rdf_parser import RDFParser
+        from zotero_webviewer.data_transformer import DataTransformer
+        from zotero_webviewer.collection_builder import CollectionHierarchyBuilder
         
         # Parse real RDF data
         parser = RDFParser()

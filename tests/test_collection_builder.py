@@ -1,11 +1,11 @@
 """Unit tests for collection hierarchy building functionality."""
 
 import pytest
-from literature_webviewer.collection_builder import (
+from zotero_webviewer.collection_builder import (
     CollectionHierarchyBuilder,
     CollectionHierarchyError
 )
-from literature_webviewer.data_transformer import Collection, BibliographyItem, ItemType
+from zotero_webviewer.data_transformer import Collection, BibliographyItem, ItemType
 
 
 class TestCollectionHierarchyBuilder:

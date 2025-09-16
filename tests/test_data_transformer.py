@@ -1,7 +1,7 @@
 """Unit tests for data transformation functionality."""
 
 import pytest
-from literature_webviewer.data_transformer import (
+from zotero_webviewer.data_transformer import (
     DataTransformer,
     BibliographyItem,
     Collection,

@@ -4,7 +4,7 @@ import pytest
 import json
 import time
 from pathlib import Path
-from literature_webviewer.build_pipeline import BuildPipeline, BuildConfig
+from zotero_webviewer.build_pipeline import BuildPipeline, BuildConfig
 
 
 def build_website(temp_dir, sample_rdf_file):
@@ -26,7 +26,7 @@ class TestWebInterfaceBasic:
     def test_generated_html_structure(self, temp_dir, sample_rdf_file):
         """Test that generated HTML has correct structure."""
         output_dir = temp_dir / "website"
-        from literature_webviewer.build_pipeline import BuildConfig
+        from zotero_webviewer.build_pipeline import BuildConfig
         config = BuildConfig(
             input_file=sample_rdf_file,
             output_dir=str(output_dir)
@@ -60,7 +60,7 @@ class TestWebInterfaceBasic:
     def test_generated_css_structure(self, temp_dir, sample_rdf_file):
         """Test that generated CSS has correct structure."""
         output_dir = temp_dir / "website"
-        from literature_webviewer.build_pipeline import BuildConfig
+        from zotero_webviewer.build_pipeline import BuildConfig
         config = BuildConfig(
             input_file=sample_rdf_file,
             output_dir=str(output_dir)
@@ -90,7 +90,7 @@ class TestWebInterfaceBasic:
     def test_generated_javascript_structure(self, temp_dir, sample_rdf_file):
         """Test that generated JavaScript has correct structure."""
         output_dir = temp_dir / "website"
-        from literature_webviewer.build_pipeline import BuildConfig
+        from zotero_webviewer.build_pipeline import BuildConfig
         config = BuildConfig(
             input_file=sample_rdf_file,
             output_dir=str(output_dir)
@@ -124,7 +124,7 @@ class TestWebInterfaceBasic:
     def test_data_files_accessibility(self, temp_dir, sample_rdf_file):
         """Test that data files are properly structured for web access."""
         output_dir = temp_dir / "website"
-        from literature_webviewer.build_pipeline import BuildConfig
+        from zotero_webviewer.build_pipeline import BuildConfig
         config = BuildConfig(
             input_file=sample_rdf_file,
             output_dir=str(output_dir)

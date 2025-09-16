@@ -142,3 +142,8 @@
     - Add build artifacts and deployment scripts
     - Add uv command to build the page: `uv run build`
     - _Requirements: 6.1, 6.2, 6.4_
+
+- [ ] 14. Configuration
+  - The build should read configuration from a configuration file, e.g. in yaml format
+  - One option should be to specify the page title (default: Zotero Library Browser)
+  - It should be possible to activate or deactivate the collections view

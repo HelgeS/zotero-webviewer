@@ -211,7 +211,7 @@ interface Attachment {
 ## File Structure
 
 ```
-literature-webviewer/
+zotero-webviewer/
 ├── src/
 │   ├── rdf_parser.py
 │   ├── data_transformer.py

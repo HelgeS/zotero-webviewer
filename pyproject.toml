@@ -1,5 +1,5 @@
 [project]
-name = "literature-webviewer"
+name = "zotero-webviewer"
 version = "0.1.0"
 description = "A static website generator for browsing Zotero literature collections"
 readme = "README.md"
@@ -19,14 +19,17 @@ test = [
 ]
 
 [project.scripts]
-literature-webviewer = "literature_webviewer.cli:cli"
-build = "literature_webviewer.cli:build_command"
+zotero-webviewer = "zotero_webviewer.cli:cli"
+build = "zotero_webviewer.cli:build_command"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [dependency-groups]
+dev = [
+    "ruff>=0.13.0",
+]
 test = [
     "pytest>=8.4.2",
     "pytest-cov>=7.0.0",

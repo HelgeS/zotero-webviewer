@@ -5,7 +5,7 @@ from pathlib import Path
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, DC
 
-from literature_webviewer.rdf_parser import (
+from zotero_webviewer.rdf_parser import (
     RDFParser, 
     RDFParsingError, 
     RDFValidationError, 

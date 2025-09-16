@@ -1,1 +1,1 @@
-# Test package for literature-webviewer
+# Test package for zotero-webviewer

@@ -100,7 +100,7 @@ Examples:
     
     # Build command
     cmd = [
-        sys.executable, '-m', 'literature_webviewer.cli',
+        sys.executable, '-m', 'zotero_webviewer.cli',
         'build',
         '--input', args.input,
         '--output', args.output

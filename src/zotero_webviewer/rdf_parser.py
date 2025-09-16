@@ -231,21 +231,10 @@ class RDFParser:
         collections = []
         
         try:
-            # In Zotero RDF, collections are typically represented as subjects
-            # that have dcterms:hasPart relationships with items
-            collection_subjects = set()
-            
-            # Find subjects that have hasPart relationships (indicating collections)
-            for subject, _, _ in graph.triples((None, DCTERMS.hasPart, None)):
-                collection_subjects.add(subject)
-            
-            # Also look for subjects that are referenced by dcterms:isPartOf
-            for _, _, collection_ref in graph.triples((None, DCTERMS.isPartOf, None)):
-                if isinstance(collection_ref, URIRef):
-                    collection_subjects.add(collection_ref)
-            
-            for collection_subject in collection_subjects:
-                collection_data = self._extract_collection_data(graph, collection_subject)
+            # In Zotero RDF, collections are specifically marked with z:Collection type
+            # This distinguishes them from venues (bib:Journal) and other entities
+            for subject in graph.subjects(RDF.type, Z.Collection):
+                collection_data = self._extract_collection_data(graph, subject)
                 if collection_data:
                     collections.append(collection_data)
             

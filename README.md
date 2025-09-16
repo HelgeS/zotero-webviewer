@@ -2,6 +2,8 @@
 
 A static website generator that transforms Zotero RDF exports into interactive, searchable web interfaces for browsing academic literature collections.
 
+**Disclaimer:** This project has been mostly LLM-generated. There is a lot of stuff in it that needs to be cleaned-up, but it's providing most of the desired functionality already.
+
 ## Features
 
 - **Interactive Bibliography Table**: Sortable columns, pagination, and detailed item views
@@ -47,8 +49,8 @@ uv run build --input library.rdf --production
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/literature-webviewer.git
-cd literature-webviewer
+git clone https://github.com/yourusername/zotero-webviewer.git
+cd zotero-webviewer
 
 # Install with uv
 uv sync
@@ -70,22 +72,22 @@ pip install rdflib jinja2 click
 
 ```bash
 # Basic build
-literature-webviewer build --input library.rdf
+zotero-webviewer build --input library.rdf
 
 # Production build with optimizations
-literature-webviewer build --input library.rdf --production
+zotero-webviewer build --input library.rdf --production
 
 # Custom output directory
-literature-webviewer build --input library.rdf --output my-site
+zotero-webviewer build --input library.rdf --output my-site
 
 # Watch for changes and rebuild automatically
-literature-webviewer watch --input library.rdf
+zotero-webviewer watch --input library.rdf
 
 # Validate RDF file
-literature-webviewer validate-rdf --input library.rdf
+zotero-webviewer validate-rdf --input library.rdf
 
 # Show build information
-literature-webviewer info --output output
+zotero-webviewer info --output output
 ```
 
 ### Simple Build Script
@@ -167,8 +169,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 ## Project Structure
 
 ```
-literature-webviewer/
-├── src/literature_webviewer/    # Python source code
+zotero-webviewer/
+├── src/zotero_webviewer/    # Python source code
 │   ├── cli.py                   # Command-line interface
 │   ├── rdf_parser.py           # RDF parsing logic
 │   ├── data_transformer.py     # Data transformation
@@ -218,15 +220,15 @@ output/
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/literature-webviewer.git
-cd literature-webviewer
+git clone https://github.com/yourusername/zotero-webviewer.git
+cd zotero-webviewer
 uv sync
 
 # Run the comprehensive test suite
 uv run pytest
 
 # Run tests with coverage
-uv run pytest --cov=src/literature_webviewer
+uv run pytest --cov=src/zotero_webviewer
 
 # Build development version
 uv run build --input sample.rdf --verbose
@@ -269,7 +271,7 @@ uv run pytest tests/test_web_interface.py       # Web interface tests
 uv run pytest -v
 
 # Run with coverage report
-uv run pytest --cov=src/literature_webviewer --cov-report=html
+uv run pytest --cov=src/zotero_webviewer --cov-report=html
 
 # Quick test run
 uv run pytest -q
@@ -289,7 +291,7 @@ The test suite uses real RDF data instead of mocking for more reliable and maint
 ### Making Changes
 
 1. **Templates**: Modify files in `templates/` directory
-2. **Python Code**: Update source files in `src/literature_webviewer/`
+2. **Python Code**: Update source files in `src/zotero_webviewer/`
 3. **Rebuild**: Run `uv run build` to test changes
 4. **Production Test**: Use `--production` flag before deploying
 
@@ -315,7 +317,7 @@ The test suite uses real RDF data instead of mocking for more reliable and maint
 
 ### Getting Help
 
-1. **Validate your RDF**: `literature-webviewer validate-rdf --input library.rdf`
+1. **Validate your RDF**: `zotero-webviewer validate-rdf --input library.rdf`
 2. **Use verbose mode**: Add `--verbose` to any command for detailed output
 3. **Check logs**: Review build output for specific error messages
 4. **Run tests**: Use `uv run pytest -v` to verify your installation and identify issues

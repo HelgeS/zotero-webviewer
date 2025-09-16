@@ -6,12 +6,12 @@ from pathlib import Path
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF, DC, DCTERMS, FOAF
 
-from literature_webviewer.build_pipeline import BuildPipeline, BuildConfig
-from literature_webviewer.rdf_parser import RDFParser
-from literature_webviewer.data_transformer import DataTransformer
-from literature_webviewer.collection_builder import CollectionHierarchyBuilder
-from literature_webviewer.json_generator import JSONGenerator
-from literature_webviewer.site_generator import SiteGenerator
+from zotero_webviewer.build_pipeline import BuildPipeline, BuildConfig
+from zotero_webviewer.rdf_parser import RDFParser
+from zotero_webviewer.data_transformer import DataTransformer
+from zotero_webviewer.collection_builder import CollectionHierarchyBuilder
+from zotero_webviewer.json_generator import JSONGenerator
+from zotero_webviewer.site_generator import SiteGenerator
 
 
 # Define Zotero-specific namespaces for test data
@@ -28,7 +28,7 @@ class TestBuildPipelineIntegration:
         output_dir = temp_dir / "output"
         
         # Initialize build pipeline
-        from literature_webviewer.build_pipeline import BuildConfig
+        from zotero_webviewer.build_pipeline import BuildConfig
         config = BuildConfig(
             input_file=sample_rdf_file,
             output_dir=str(output_dir)
@@ -417,7 +417,7 @@ class TestComponentIntegration:
         # Generate site
         site_generator = SiteGenerator(str(temp_dir))
         
-        from literature_webviewer.site_generator import SiteConfig
+        from zotero_webviewer.site_generator import SiteConfig
         site_config = SiteConfig(
             title="Test Site",
             collection_title="Test Collection",

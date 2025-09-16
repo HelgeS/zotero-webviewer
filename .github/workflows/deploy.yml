@@ -81,7 +81,7 @@ jobs:
         
     - name: Build literature webviewer
       run: |
-        uv run literature-webviewer build \
+        uv run zotero-webviewer build \
           --input "${{ steps.find-rdf.outputs.rdf_file }}" \
           --output "dist" \
           --production \

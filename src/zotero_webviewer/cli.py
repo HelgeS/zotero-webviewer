@@ -367,7 +367,7 @@ def info(output):
         click.echo("No JSON files found in output directory")
         return
     
-    click.echo(f"Literature webviewer files in {output_path}:")
+    click.echo(f"Zotero webviewer files in {output_path}:")
     
     # Show JSON files with sizes and validation
     file_sizes = json_generator.get_file_sizes()
@@ -450,28 +450,6 @@ def clean(output, confirm):
     
     click.echo(f"Cleaned {deleted_count} files")
 
-
-# Maintain backward compatibility with the old main function
-@click.command()
-@click.option('--input', '-i', help='Input RDF file path')
-@click.option('--output', '-o', help='Output directory path', default='output')
-@click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
-def main(input, output, verbose):
-    """Generate a static website from Zotero RDF export (legacy interface)."""
-    setup_logging(verbose)
-    
-    if not input:
-        click.echo("Literature Webviewer CLI")
-        click.echo("Use 'literature-webviewer build --help' for usage information")
-        click.echo("Or use the legacy format: literature-webviewer --input <file> --output <dir>")
-        return
-    
-    # Call the build command with the provided arguments
-    ctx = click.Context(build)
-    ctx.obj = {'verbose': verbose}
-    ctx.invoke(build, input=input, output=output, data_only=False, combined=False, validate=False)
-
-
 @click.command()
 @click.option('--input', '-i', help='Input RDF file path')
 @click.option('--output', '-o', help='Output directory path', default='output')
@@ -501,9 +479,4 @@ def build_command(input, output, production, verbose):
 
 
 if __name__ == '__main__':
-    # Check if we're being called with legacy arguments
-    if len(sys.argv) > 1 and not sys.argv[1].startswith('-') and sys.argv[1] not in ['build', 'watch', 'info', 'clean', 'validate-rdf']:
-        # This looks like a legacy call, redirect to main function
-        main()
-    else:
-        cli()
+    cli()

@@ -758,6 +758,26 @@ const BibliographyTable = {
                 }
             });
         });
+
+        // Handle View Details button clicks and title link clicks using event delegation
+        this.tbody.addEventListener('click', (e) => {
+            const actionButton = e.target.closest('.action-btn');
+            const titleLink = e.target.closest('.item-title-link');
+            
+            if (actionButton) {
+                e.preventDefault();
+                const itemId = actionButton.getAttribute('data-item-id');
+                if (itemId && window.DetailedItemView) {
+                    window.DetailedItemView.showItem(itemId);
+                }
+            } else if (titleLink) {
+                e.preventDefault();
+                const itemId = titleLink.getAttribute('data-item-id');
+                if (itemId && window.DetailedItemView) {
+                    window.DetailedItemView.showItem(itemId);
+                }
+            }
+        });
     },
     
     /**
@@ -985,6 +1005,198 @@ const BibliographyTable = {
 
 // Make BibliographyTable globally available
 window.BibliographyTable = BibliographyTable;
+
+/**
+ * Detailed Item View Component for displaying full item information in a modal
+ */
+const DetailedItemView = {
+    modal: null,
+    modalTitle: null,
+    modalBody: null,
+    
+    /**
+     * Initialize the detailed item view component
+     */
+    init() {
+        this.modal = document.getElementById('item-modal');
+        this.modalTitle = document.getElementById('modal-title');
+        this.modalBody = document.querySelector('.modal-body');
+        
+        if (this.modal) {
+            this.initializeEventHandlers();
+        }
+    },
+    
+    /**
+     * Initialize event handlers for modal functionality
+     */
+    initializeEventHandlers() {
+        // Close modal when clicking close button
+        const closeButton = this.modal.querySelector('.modal-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                this.hideModal();
+            });
+        }
+        
+        // Close modal when clicking overlay
+        const overlay = this.modal.querySelector('.modal-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                this.hideModal();
+            });
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal && this.modal.getAttribute('aria-hidden') === 'false') {
+                this.hideModal();
+            }
+        });
+    },
+    
+    /**
+     * Show detailed information for an item
+     */
+    showItem(itemId) {
+        // Find the item in the bibliography data
+        const item = AppState.bibliography.find(bibItem => bibItem.id === itemId);
+        
+        if (!item) {
+            console.error('Item not found:', itemId);
+            return;
+        }
+        
+        // Update modal content
+        if (this.modalTitle) {
+            this.modalTitle.textContent = item.title || 'Untitled';
+        }
+        
+        if (this.modalBody) {
+            this.modalBody.innerHTML = this.renderItemDetails(item);
+        }
+        
+        // Show the modal
+        this.showModal();
+    },
+    
+    /**
+     * Render detailed item information
+     */
+    renderItemDetails(item) {
+        const authors = (item.authors || []).map(author => 
+            author.fullName || author.name || `${author.givenName || ''} ${author.surname || ''}`.trim()
+        ).join(', ') || 'Unknown authors';
+        
+        const collections = (item.collections || []).map(colId => {
+            const collection = AppState.collections[colId];
+            return collection ? collection.title : colId;
+        }).join(', ') || 'No collections';
+        
+        return `
+            <div class="item-details">
+                <div class="item-detail-section">
+                    <h3>Authors</h3>
+                    <p>${this.escapeHtml(authors)}</p>
+                </div>
+                
+                ${item.year ? `
+                <div class="item-detail-section">
+                    <h3>Year</h3>
+                    <p>${item.year}</p>
+                </div>
+                ` : ''}
+                
+                ${item.venue ? `
+                <div class="item-detail-section">
+                    <h3>Venue</h3>
+                    <p>${this.escapeHtml(item.venue)}</p>
+                </div>
+                ` : ''}
+                
+                <div class="item-detail-section">
+                    <h3>Type</h3>
+                    <p>${this.escapeHtml(item.type || 'Unknown')}</p>
+                </div>
+                
+                ${item.abstract ? `
+                <div class="item-detail-section">
+                    <h3>Abstract</h3>
+                    <p>${this.escapeHtml(item.abstract)}</p>
+                </div>
+                ` : ''}
+                
+                ${item.doi ? `
+                <div class="item-detail-section">
+                    <h3>DOI</h3>
+                    <p><a href="${this.escapeHtml(item.doi)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(item.doi)}</a></p>
+                </div>
+                ` : ''}
+                
+                ${item.url ? `
+                <div class="item-detail-section">
+                    <h3>URL</h3>
+                    <p><a href="${this.escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(item.url)}</a></p>
+                </div>
+                ` : ''}
+                
+                <div class="item-detail-section">
+                    <h3>Collections</h3>
+                    <p>${this.escapeHtml(collections)}</p>
+                </div>
+                
+                ${item.keywords && item.keywords.length > 0 ? `
+                <div class="item-detail-section">
+                    <h3>Keywords</h3>
+                    <div class="keywords-list">
+                        ${item.keywords.map(keyword => 
+                            `<span class="keyword-tag">${this.escapeHtml(keyword)}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+                ` : ''}
+            </div>
+        `;
+    },
+    
+    /**
+     * Show the modal
+     */
+    showModal() {
+        if (this.modal) {
+            this.modal.classList.add('active');
+            this.modal.setAttribute('aria-hidden', 'false');
+            
+            // Focus the close button for accessibility
+            const closeButton = this.modal.querySelector('.modal-close');
+            if (closeButton) {
+                closeButton.focus();
+            }
+        }
+    },
+    
+    /**
+     * Hide the modal
+     */
+    hideModal() {
+        if (this.modal) {
+            this.modal.classList.remove('active');
+            this.modal.setAttribute('aria-hidden', 'true');
+        }
+    },
+    
+    /**
+     * Escape HTML to prevent XSS
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+};
+
+// Make DetailedItemView globally available
+window.DetailedItemView = DetailedItemView;
 
 /**
  * Breadcrumb Component for displaying current collection hierarchy path
@@ -2648,3 +2860,6 @@ const CollectionTree = {
         }
     }
 };
+
+// Make CollectionTree globally available
+window.CollectionTree = CollectionTree;

@@ -27,7 +27,7 @@ This guide explains how to deploy the Literature Webviewer as a static website.
 uv pip install -e .
 
 # Build with production optimizations
-literature-webviewer build --input library.rdf --output dist --production
+zotero-webviewer build --input library.rdf --output dist --production
 
 # The dist/ directory contains your static website
 ```
@@ -104,13 +104,13 @@ Development builds are faster but larger file sizes.
 uv run build --input library.rdf --output my-site --production
 
 # Build only data files (no HTML/CSS/JS)
-literature-webviewer build --input library.rdf --data-only
+zotero-webviewer build --input library.rdf --data-only
 
 # Build with validation disabled (faster)
-literature-webviewer build --input library.rdf --no-validate
+zotero-webviewer build --input library.rdf --no-validate
 
 # Watch for changes and rebuild automatically
-literature-webviewer watch --input library.rdf --production
+zotero-webviewer watch --input library.rdf --production
 ```
 
 ## File Structure
@@ -157,7 +157,7 @@ Production builds automatically include:
 
 1. **Check RDF file**: Ensure your RDF export is valid
    ```bash
-   literature-webviewer validate-rdf --input library.rdf
+   zotero-webviewer validate-rdf --input library.rdf
    ```
 
 2. **Check dependencies**: Ensure all dependencies are installed
