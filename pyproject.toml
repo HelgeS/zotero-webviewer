@@ -12,10 +12,23 @@ dependencies = [
 
 [project.optional-dependencies]
 watch = ["watchdog>=3.0.0"]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+]
 
 [project.scripts]
 literature-webviewer = "literature_webviewer.cli:cli"
+build = "literature_webviewer.cli:build_command"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+test = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+]

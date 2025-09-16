@@ -9,8 +9,8 @@ from datetime import datetime
 
 import click
 
-from .rdf_parser import RDFParser, RDFParsingError
-from .data_transformer import DataTransformer, DataTransformationError
+from .rdf_parser import RDFParser, RDFParsingError, RDFValidationError, RDFDataIntegrityError
+from .data_transformer import DataTransformer, DataTransformationError, DataValidationError, DataIntegrityError
 from .collection_builder import CollectionHierarchyBuilder, CollectionHierarchyError
 from .json_generator import JSONGenerator, JSONGenerationError
 from .build_pipeline import BuildPipeline, BuildConfig, BuildPipelineError
@@ -67,8 +67,9 @@ def cli(ctx, verbose):
 @click.option('--combined', is_flag=True, help='Generate single combined JSON file instead of separate files')
 @click.option('--validate/--no-validate', default=True, help='Validate generated JSON files (default: enabled)')
 @click.option('--incremental/--no-incremental', default=True, help='Enable incremental builds (default: enabled)')
+@click.option('--production', is_flag=True, help='Enable production optimizations (minification, compression)')
 @click.pass_context
-def build(ctx, input, output, data_only, combined, validate, incremental):
+def build(ctx, input, output, data_only, combined, validate, incremental, production):
     """Build a static website from Zotero RDF export."""
     verbose = ctx.obj.get('verbose', False)
     
@@ -88,6 +89,7 @@ def build(ctx, input, output, data_only, combined, validate, incremental):
             combined_json=combined,
             validate_output=validate,
             incremental=incremental,
+            production=production,
             verbose=verbose
         )
         
@@ -147,6 +149,12 @@ def build(ctx, input, output, data_only, combined, validate, incremental):
         
     except BuildPipelineError as e:
         raise click.ClickException(str(e))
+    except (RDFValidationError, RDFDataIntegrityError) as e:
+        raise click.ClickException(f"RDF validation error: {str(e)}")
+    except (DataValidationError, DataIntegrityError) as e:
+        raise click.ClickException(f"Data validation error: {str(e)}")
+    except (RDFParsingError, DataTransformationError) as e:
+        raise click.ClickException(f"Processing error: {str(e)}")
     except Exception as e:
         if verbose:
             import traceback
@@ -156,8 +164,9 @@ def build(ctx, input, output, data_only, combined, validate, incremental):
 
 @cli.command()
 @click.option('--input', '-i', required=True, help='Input RDF file path')
+@click.option('--comprehensive', is_flag=True, help='Run comprehensive validation including data transformation')
 @click.pass_context
-def validate_rdf(ctx, input):
+def validate_rdf(ctx, input, comprehensive):
     """Validate an RDF file without building the website."""
     verbose = ctx.obj.get('verbose', False)
     
@@ -178,6 +187,18 @@ def validate_rdf(ctx, input):
         click.echo(f"  Found {len(collections_data)} collections")
         click.echo(f"  Total RDF triples: {len(graph)}")
         
+        # Run data integrity validation
+        integrity_issues = parser.validate_bibliography_data_integrity(items_data)
+        if integrity_issues:
+            click.echo(f"\nData integrity issues ({len(integrity_issues)}):")
+            for issue in integrity_issues:
+                if "missing required field" in issue.lower() or "duplicate" in issue.lower():
+                    click.echo(f"  ✗ {issue}")
+                else:
+                    click.echo(f"  ⚠ {issue}")
+        else:
+            click.echo("✓ Data integrity validation passed")
+        
         # Show item type breakdown
         type_counts = {}
         for item in items_data:
@@ -189,8 +210,72 @@ def validate_rdf(ctx, input):
             for item_type, count in sorted(type_counts.items()):
                 click.echo(f"  {item_type}: {count}")
         
+        # Comprehensive validation (includes transformation)
+        if comprehensive:
+            click.echo("\nRunning comprehensive validation...")
+            
+            transformer = DataTransformer()
+            hierarchy_builder = CollectionHierarchyBuilder()
+            
+            # Transform data and check for issues
+            items = []
+            transformation_issues = []
+            
+            for item_data in items_data:
+                try:
+                    item = transformer.transform_bibliography_item(item_data)
+                    items.append(item)
+                except (DataTransformationError, DataValidationError) as e:
+                    transformation_issues.append(f"Item {item_data.get('id', 'unknown')}: {str(e)}")
+            
+            collections = []
+            for col_data in collections_data:
+                try:
+                    collection = transformer.transform_collection(col_data)
+                    collections.append(collection)
+                except DataTransformationError as e:
+                    transformation_issues.append(f"Collection {col_data.get('id', 'unknown')}: {str(e)}")
+            
+            if transformation_issues:
+                click.echo(f"\nTransformation issues ({len(transformation_issues)}):")
+                for issue in transformation_issues:
+                    click.echo(f"  ✗ {issue}")
+            else:
+                click.echo("✓ Data transformation validation passed")
+            
+            # Validate transformed data consistency
+            consistency_issues = transformer.validate_transformed_data(items, collections)
+            if consistency_issues:
+                click.echo(f"\nData consistency issues ({len(consistency_issues)}):")
+                for issue in consistency_issues:
+                    if "duplicate" in issue.lower() and "id" in issue.lower():
+                        click.echo(f"  ✗ {issue}")
+                    else:
+                        click.echo(f"  ⚠ {issue}")
+            else:
+                click.echo("✓ Data consistency validation passed")
+            
+            # Build and validate collection hierarchy
+            try:
+                root_collections = hierarchy_builder.build_hierarchy(collections)
+                hierarchy_issues = hierarchy_builder.validate_hierarchy()
+                
+                if hierarchy_issues:
+                    click.echo(f"\nHierarchy issues ({len(hierarchy_issues)}):")
+                    for issue in hierarchy_issues:
+                        click.echo(f"  ⚠ {issue}")
+                else:
+                    click.echo("✓ Collection hierarchy validation passed")
+                    
+            except CollectionHierarchyError as e:
+                click.echo(f"\n✗ Collection hierarchy validation failed: {str(e)}")
+        
+    except RDFValidationError as e:
+        raise click.ClickException(f"RDF format validation failed: {str(e)}")
+    except RDFDataIntegrityError as e:
+        raise click.ClickException(f"RDF data integrity check failed: {str(e)}")
     except RDFParsingError as e:
-        raise click.ClickException(f"RDF validation failed: {str(e)}")
+        raise click.ClickException(f"RDF parsing failed: {str(e)}")
     except Exception as e:
         if verbose:
             import traceback
@@ -385,6 +470,34 @@ def main(input, output, verbose):
     ctx = click.Context(build)
     ctx.obj = {'verbose': verbose}
     ctx.invoke(build, input=input, output=output, data_only=False, combined=False, validate=False)
+
+
+@click.command()
+@click.option('--input', '-i', help='Input RDF file path')
+@click.option('--output', '-o', help='Output directory path', default='output')
+@click.option('--production', is_flag=True, help='Enable production optimizations')
+@click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
+def build_command(input, output, production, verbose):
+    """Build command for uv run build."""
+    setup_logging(verbose)
+    
+    if not input:
+        # Try to find RDF file automatically
+        import glob
+        rdf_files = glob.glob('*.rdf') + glob.glob('*.xml')
+        if rdf_files:
+            input = rdf_files[0]
+            click.echo(f"Auto-detected RDF file: {input}")
+        else:
+            click.echo("No RDF file specified and none found automatically.")
+            click.echo("Usage: uv run build --input <rdf_file>")
+            return
+    
+    # Call the build command
+    ctx = click.Context(build)
+    ctx.obj = {'verbose': verbose}
+    ctx.invoke(build, input=input, output=output, data_only=False, combined=False, 
+               validate=True, incremental=True, production=production)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Syntax Test</title>
+</head>
+<body>
+    <h1>Testing JavaScript Syntax</h1>
+    <div id="test-result">Loading...</div>
+    
+    <script>
+        // Test if the JavaScript file loads without syntax errors
+        try {
+            // Load the app.js file
+            const script = document.createElement('script');
+            script.src = 'output/app.js';
+            script.onload = function() {
+                document.getElementById('test-result').innerHTML = 
+                    '<span style="color: green;">✓ JavaScript loaded successfully!</span><br>' +
+                    'BibliographyTable available: ' + (typeof window.BibliographyTable !== 'undefined') + '<br>' +
+                    'DetailedItemView available: ' + (typeof window.DetailedItemView !== 'undefined');
+            };
+            script.onerror = function() {
+                document.getElementById('test-result').innerHTML = 
+                    '<span style="color: red;">✗ JavaScript failed to load</span>';
+            };
+            document.head.appendChild(script);
+        } catch (error) {
+            document.getElementById('test-result').innerHTML = 
+                '<span style="color: red;">✗ Error: ' + error.message + '</span>';
+        }
+    </script>
+</body>
+</html>

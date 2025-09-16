@@ -95,26 +95,28 @@ class JSONGenerator:
         try:
             self.logger.info(f"Generating collections JSON for {len(collections)} root collections")
             
-            # Convert collections to optimized dictionary format
-            collections_data = []
-            for collection in collections:
+            # Create flat dictionary of all collections (expected by JavaScript)
+            all_collections = self._flatten_collections_list(collections)
+            collections_dict = {}
+            
+            for collection in all_collections:
                 collection_dict = collection.to_dict()
-                optimized_collection = self._optimize_collection(collection_dict)
-                collections_data.append(optimized_collection)
+                optimized_collection = self._optimize_collection_for_js(collection_dict)
+                collections_dict[collection.id] = optimized_collection
             
-            # Create collection index for quick lookups
-            collection_index = self._create_collection_index(collections)
+            # Create tree array of root collection IDs (expected by JavaScript)
+            tree = [collection.id for collection in collections]
             
-            # Create the final JSON structure
+            # Create the final JSON structure (matching JavaScript expectations)
             json_data = {
                 "metadata": {
-                    "total_collections": len(collection_index),
-                    "root_collections": len(collections_data),
+                    "total_collections": len(collections_dict),
+                    "root_collections": len(tree),
                     "generated_at": self._get_timestamp(),
                     "version": "1.0"
                 },
-                "collections": collections_data,
-                "index": collection_index
+                "collections": collections_dict,
+                "tree": tree
             }
             
             # Write to file
@@ -319,6 +321,58 @@ class JSONGenerator:
             ]
         
         return optimized
+    
+    def _optimize_collection_for_js(self, collection_dict: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Optimize collection dictionary specifically for JavaScript consumption.
+        
+        Args:
+            collection_dict: Raw collection dictionary
+            
+        Returns:
+            Optimized collection dictionary matching JavaScript expectations
+        """
+        optimized = {
+            "id": collection_dict["id"],
+            "title": collection_dict["title"],
+            "itemCount": collection_dict["item_count"]
+        }
+        
+        # Add children as array of IDs (not full objects)
+        if collection_dict.get("children"):
+            optimized["children"] = [child["id"] for child in collection_dict["children"]]
+        
+        # Only include parent_id if it exists
+        if collection_dict.get("parent_id"):
+            optimized["parentId"] = collection_dict["parent_id"]
+        
+        # Only include item_ids if there are items
+        if collection_dict.get("item_ids"):
+            optimized["itemIds"] = collection_dict["item_ids"]
+        
+        return optimized
+    
+    def _flatten_collections_list(self, collections: List[Collection]) -> List[Collection]:
+        """
+        Flatten a hierarchical collection structure into a flat list.
+        
+        Args:
+            collections: List of root collections (may contain nested children)
+            
+        Returns:
+            Flat list of all collections
+        """
+        flattened = []
+        
+        def _add_collection_and_children(collection: Collection):
+            flattened.append(collection)
+            for child in collection.children:
+                _add_collection_and_children(child)
+        
+        for collection in collections:
+            _add_collection_and_children(collection)
+        
+        return flattened
     
     def _create_collection_index(self, collections: List[Collection]) -> Dict[str, Any]:
         """

@@ -1,0 +1,816 @@
+{
+  "metadata": {
+    "total_items": 17,
+    "generated_at": "2025-09-16T15:01:05.357073",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "id": "urn:isbn:978-1-4503-4232-2",
+      "type": "conference",
+      "title": "\"Why Should I Trust You?\": Explaining the Predictions of Any Classifier",
+      "authors": [
+        {
+          "name": "Marco Tulio Ribeiro",
+          "given": "Marco Tulio",
+          "surname": "Ribeiro"
+        },
+        {
+          "name": "Sameer Singh",
+          "given": "Sameer",
+          "surname": "Singh"
+        },
+        {
+          "name": "Carlos Guestrin",
+          "given": "Carlos",
+          "surname": "Guestrin"
+        }
+      ],
+      "venue": "Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining",
+      "abstract": "Despite widespread adoption, machine learning models remain mostly black boxes. Understanding the reasons behind predictions is, however, quite important in assessing trust, which is fundamental if one plans to take action based on a prediction, or when choosing whether to deploy a new model. Such understanding also provides insights into the model, which can be used to transform an untrustworthy model or prediction into a trustworthy one. In this work, we propose LIME, a novel explanation technique that explains the predictions of any classifier in an interpretable and faithful manner, by learning an interpretable model locally varound the prediction. We also propose a method to explain models by presenting representative individual predictions and their explanations in a non-redundant way, framing the task as a submodular optimization problem. We demonstrate the flexibility of these methods by explaining different models for text (e.g. random forests) and image classification (e.g. neural networks). We show the utility of explanations via novel experiments, both simulated and with human subjects, on various scenarios that require trust: deciding if one should trust a prediction, choosing between models, improving an untrustworthy classifier, and identifying why a classifier should not be trusted.",
+      "keywords": [
+        "machine learning",
+        "neural network",
+        "optimization",
+        "classification"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4711",
+          "title": "Ribeiro et al_2016_Why Should I Trust You.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5931",
+      "type": "other",
+      "title": "A Declarative Metamorphic Testing Framework for Autonomous Driving",
+      "authors": [
+        {
+          "name": "Yao Deng",
+          "given": "Yao",
+          "surname": "Deng"
+        },
+        {
+          "name": "Xi Zheng",
+          "given": "Xi",
+          "surname": "Zheng"
+        },
+        {
+          "name": "Tianyi Zhang",
+          "given": "Tianyi",
+          "surname": "Zhang"
+        },
+        {
+          "name": "Huai Liu",
+          "given": "Huai",
+          "surname": "Liu"
+        },
+        {
+          "name": "Guannan Lou",
+          "given": "Guannan",
+          "surname": "Lou"
+        },
+        {
+          "name": "Miryung Kim",
+          "given": "Miryung",
+          "surname": "Kim"
+        },
+        {
+          "name": "Tsong Yueh Chen",
+          "given": "Tsong Yueh",
+          "surname": "Chen"
+        }
+      ],
+      "year": 2022,
+      "venue": "IEEE Transactions on Software Engineering",
+      "abstract": "Autonomous driving has gained much attention from both industry and academia. Currently, Deep Neural Networks (DNNs) are widely used for perception and control in autonomous driving. However, several fatal accidents caused by autonomous vehicles have raised serious safety concerns about autonomous driving models. Some recent studies have successfully used the metamorphic testing technique to detect thousands of potential issues in some popularly used autonomous driving models. However, prior study is limited to a small set of metamorphic relations, which do not reflect rich, real-world traffic scenarios and are also not customizable. This paper presents a novel declarative rule-based metamorphic testing framework called RMT. RMT provides a rule template with natural language syntax, allowing users to flexibly specify an enriched set of testing scenarios based on real-world traffic rules and domain knowledge. RMT automatically parses human-written rules to metamorphic relations using an NLP-based rule parser referring to an ontology list and generates test cases with a variety of image transformation engines. We evaluated RMT on three autonomous driving models. With an enriched set of metamorphic relations, RMT detected a significant number of abnormal model predictions that were not detected by prior work. Through a large-scale human study on Amazon Mechanical Turk, we further confirmed the authenticity of test cases generated by RMT and the validity of detected abnormal model predictions.",
+      "keywords": [
+        "neural network"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5932",
+          "title": "Deng et al_2022_A Declarative Metamorphic Testing Framework for Autonomous Driving.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "https://openreview.net/forum?id=ZjN2AuXgu1",
+      "type": "conference",
+      "title": "A Framework for Generating Dangerous Scenes for Testing Robustness",
+      "authors": [
+        {
+          "name": "Shengjie Xu",
+          "given": "Shengjie",
+          "surname": "Xu"
+        },
+        {
+          "name": "Lan Mi",
+          "given": "Lan",
+          "surname": "Mi"
+        },
+        {
+          "name": "Leilani H. Gilpin",
+          "given": "Leilani H.",
+          "surname": "Gilpin"
+        }
+      ],
+      "year": 2022,
+      "abstract": "Benchmark datasets for autonomous driving, such as KITTI, nuScenes, Argoverse, or Waymo are realistic but designed to be faultless. These datasets do not contain errors, difficult driving maneuvers, or other corner cases. We propose a framework for perturbing autonomous vehicle datasets, the DANGER framework, which generates edge-case images on top of current autonomous driving datasets. The input to DANGER are photorealistic datasets from real driving scenarios. We present the DANGER algorithm for vehicle position manipulation and the interface towards the renderer module, and present five scenario-level dangerous primitives generation applied to the virtual KITTI and virtual KITTI 2 datasets. Our experiments prove that DANGER can be used as a framework for expanding the current datasets to cover generative while realistic and anomalous corner cases.",
+      "keywords": [
+        "algorithm"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125"
+      ]
+    },
+    {
+      "id": "https://www.aclweb.org/anthology/W19-8403",
+      "type": "conference",
+      "title": "A Survey of Explainable AI Terminology",
+      "authors": [
+        {
+          "name": "Miruna-Adriana Clinciu",
+          "given": "Miruna-Adriana",
+          "surname": "Clinciu"
+        },
+        {
+          "name": "Helen Hastie",
+          "given": "Helen",
+          "surname": "Hastie"
+        }
+      ],
+      "year": 2019,
+      "venue": "Proceedings of the 1st Workshop on Interactive Natural Language Technology for Explainable Artificial Intelligence (NL4XAI 2019)",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4701",
+          "title": "Clinciu_Hastie_2019_A Survey of Explainable AI Terminology.pdf",
+          "type": "application/pdf",
+          "url": ""
+        },
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4702",
+          "title": "Clinciu_Hastie_2019_A Survey of Explainable AI Terminology.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "http://arxiv.org/abs/1802.01933",
+      "type": "other",
+      "title": "A Survey Of Methods For Explaining Black Box Models",
+      "authors": [
+        {
+          "name": "Riccardo Guidotti",
+          "given": "Riccardo",
+          "surname": "Guidotti"
+        },
+        {
+          "name": "Anna Monreale",
+          "given": "Anna",
+          "surname": "Monreale"
+        },
+        {
+          "name": "Salvatore Ruggieri",
+          "given": "Salvatore",
+          "surname": "Ruggieri"
+        },
+        {
+          "name": "Franco Turini",
+          "given": "Franco",
+          "surname": "Turini"
+        },
+        {
+          "name": "Dino Pedreschi",
+          "given": "Dino",
+          "surname": "Pedreschi"
+        },
+        {
+          "name": "Fosca Giannotti",
+          "given": "Fosca",
+          "surname": "Giannotti"
+        }
+      ],
+      "year": 2018,
+      "venue": "arXiv:1802.01933 [cs]",
+      "abstract": "In the last years many accurate decision support systems have been constructed as black boxes, that is as systems that hide their internal logic to the user. This lack of explanation constitutes both a practical and an ethical issue. The literature reports many approaches aimed at overcoming this crucial weakness sometimes at the cost of scarifying accuracy for interpretability. The applications in which black box decision systems can be used are various, and each approach is typically developed to provide a solution for a specific problem and, as a consequence, delineating explicitly or implicitly its own definition of interpretability and explanation. The aim of this paper is to provide a classification of the main problems addressed in the literature with respect to the notion of explanation and the type of black box system. Given a problem definition, a black box type, and a desired explanation this survey should help the researcher to find the proposals more useful for his own work. The proposed classification of approaches to open black box models should also be useful for putting the many research open questions in perspective.",
+      "keywords": [
+        "classification"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4708",
+          "title": "Guidotti et al_2018_A Survey Of Methods For Explaining Black Box Models.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "https://doi.org/10.1109/ITSC55140.2022.9921776",
+      "type": "conference",
+      "title": "ANTI-CARLA: An Adversarial Testing Framework for Autonomous Vehicles in CARLA",
+      "authors": [
+        {
+          "name": "Shreyas Ramakrishna",
+          "given": "Shreyas",
+          "surname": "Ramakrishna"
+        },
+        {
+          "name": "Baiting Luo",
+          "given": "Baiting",
+          "surname": "Luo"
+        },
+        {
+          "name": "Christopher B. Kuhn",
+          "given": "Christopher B.",
+          "surname": "Kuhn"
+        },
+        {
+          "name": "Gabor Karsai",
+          "given": "Gabor",
+          "surname": "Karsai"
+        },
+        {
+          "name": "Abhishek Dubey",
+          "given": "Abhishek",
+          "surname": "Dubey"
+        }
+      ],
+      "venue": "2022 IEEE 25th International Conference on Intelligent Transportation Systems (ITSC)",
+      "abstract": "Despite recent advances in autonomous driving systems, accidents such as the fatal Uber crash in 2018 show these systems are still susceptible to edge cases. Such systems must be thoroughly tested and validated before being deployed in the real world to avoid such events. Testing in open-world scenarios can be difficult, time-consuming, and expensive. These challenges can be addressed by using driving simulators such as CARLA instead. A key part of such tests is adversarial testing, in which the goal is to find scenarios that lead to failures of the given system. While several independent efforts in testing have been made, a well-established testing framework that enables adversarial testing has yet to be made available for CARLA. We therefore propose ANTI-CARLA, an automated testing framework in CARLA for simulating adversarial weather conditions (e.g., heavy rain) and sensor faults (e.g., camera occlusion) that fail the system. The operating conditions in which a given system should be tested are specified in a scenario description language. The framework offers an efficient search mechanism that searches for adversarial operating conditions that will fail the tested system. In this way, ANTI-CARLA extends the CARLA simulator with the capability of performing adversarial testing on any given driving pipeline. We use ANTI-CARLA to test the driving pipeline trained with Learning By Cheating (LBC) approach. The simulation results demonstrate that ANTI-CARLA can effectively and automatically find a range of failure cases despite LBC reaching an accuracy of 100&#x0025; in the CARLA benchmark.",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5720",
+          "title": "Ramakrishna et al_2022_ANTI-CARLA.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "urn:isbn:978-1-4503-8096-6",
+      "type": "conference",
+      "title": "ExplAIn Yourself! Transparency for Positive UX in Autonomous Driving",
+      "authors": [
+        {
+          "name": "Tobias Schneider",
+          "given": "Tobias",
+          "surname": "Schneider"
+        },
+        {
+          "name": "Joana Hois",
+          "given": "Joana",
+          "surname": "Hois"
+        },
+        {
+          "name": "Alischa Rosenstein",
+          "given": "Alischa",
+          "surname": "Rosenstein"
+        },
+        {
+          "name": "Sabiha Ghellal",
+          "given": "Sabiha",
+          "surname": "Ghellal"
+        },
+        {
+          "name": "Dimitra Theofanou-Fülbier",
+          "given": "Dimitra",
+          "surname": "Theofanou-Fülbier"
+        },
+        {
+          "name": "Ansgar R.S. Gerlicher",
+          "given": "Ansgar R.S.",
+          "surname": "Gerlicher"
+        }
+      ],
+      "year": 2021,
+      "venue": "Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems",
+      "abstract": "In a fully autonomous driving situation, passengers hand over the steering control to a highly automated system. Autonomous driving behaviour may lead to confusion and negative user experience. When establishing such new technology, the user’s acceptance and understanding are crucial factors regarding success and failure. Using a driving simulator and a mobile application, we evaluated if system transparency during and after the interaction can increase the user experience and subjective feeling of safety and control. We contribute an initial guideline for autonomous driving experience design, bringing together the areas of user experience, explainable artificial intelligence and autonomous driving. The AVAM questionnaire, UEQ-S and interviews show that explanations during or after the ride help turn a negative user experience into a neutral one, which might be due to the increased feeling of control. However, we did not detect an effect for combining explanations during and after the ride.",
+      "keywords": [
+        "artificial intelligence"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5683",
+          "title": "Full Text",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "http://arxiv.org/abs/1910.10045",
+      "type": "other",
+      "title": "Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI",
+      "authors": [
+        {
+          "name": "Alejandro Barredo Arrieta",
+          "given": "Alejandro Barredo",
+          "surname": "Arrieta"
+        },
+        {
+          "name": "Natalia Díaz-Rodríguez",
+          "given": "Natalia",
+          "surname": "Díaz-Rodríguez"
+        },
+        {
+          "name": "Javier Del Ser",
+          "given": "Javier",
+          "surname": "Del Ser"
+        },
+        {
+          "name": "Adrien Bennetot",
+          "given": "Adrien",
+          "surname": "Bennetot"
+        },
+        {
+          "name": "Siham Tabik",
+          "given": "Siham",
+          "surname": "Tabik"
+        },
+        {
+          "name": "Alberto Barbado",
+          "given": "Alberto",
+          "surname": "Barbado"
+        },
+        {
+          "name": "Salvador García",
+          "given": "Salvador",
+          "surname": "García"
+        },
+        {
+          "name": "Sergio Gil-López",
+          "given": "Sergio",
+          "surname": "Gil-López"
+        },
+        {
+          "name": "Daniel Molina",
+          "given": "Daniel",
+          "surname": "Molina"
+        },
+        {
+          "name": "Richard Benjamins",
+          "given": "Richard",
+          "surname": "Benjamins"
+        },
+        {
+          "name": "Raja Chatila",
+          "given": "Raja",
+          "surname": "Chatila"
+        },
+        {
+          "name": "Francisco Herrera",
+          "given": "Francisco",
+          "surname": "Herrera"
+        }
+      ],
+      "year": 2019,
+      "venue": "arXiv:1910.10045 [cs]",
+      "abstract": "In the last years, Artificial Intelligence (AI) has achieved a notable momentum that may deliver the best of expectations over many application sectors across the field. For this to occur, the entire community stands in front of the barrier of explainability, an inherent problem of AI techniques brought by sub-symbolism (e.g. ensembles or Deep Neural Networks) that were not present in the last hype of AI. Paradigms underlying this problem fall within the so-called eXplainable AI (XAI) field, which is acknowledged as a crucial feature for the practical deployment of AI models. This overview examines the existing literature in the field of XAI, including a prospect toward what is yet to be reached. We summarize previous efforts to define explainability in Machine Learning, establishing a novel definition that covers prior conceptual propositions with a major focus on the audience for which explainability is sought. We then propose and discuss about a taxonomy of recent contributions related to the explainability of different Machine Learning models, including those aimed at Deep Learning methods for which a second taxonomy is built. This literature analysis serves as the background for a series of challenges faced by XAI, such as the crossroads between data fusion and explainability. Our prospects lead toward the concept of Responsible Artificial Intelligence, namely, a methodology for the large-scale implementation of AI methods in real organizations with fairness, model explainability and accountability at its core. Our ultimate goal is to provide newcomers to XAI with a reference material in order to stimulate future research advances, but also to encourage experts and professionals from other disciplines to embrace the benefits of AI in their activity sectors, without any prior bias for its lack of interpretability.",
+      "keywords": [
+        "machine learning",
+        "artificial intelligence",
+        "deep learning",
+        "neural network"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4699",
+          "title": "Arrieta et al_2019_Explainable Artificial Intelligence (XAI) - Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5665",
+      "type": "conference",
+      "title": "Explainable Object-Induced Action Decision for Autonomous Vehicles",
+      "authors": [
+        {
+          "name": "Yiran Xu",
+          "given": "Yiran",
+          "surname": "Xu"
+        },
+        {
+          "name": "Xiaoyin Yang",
+          "given": "Xiaoyin",
+          "surname": "Yang"
+        },
+        {
+          "name": "Lihang Gong",
+          "given": "Lihang",
+          "surname": "Gong"
+        },
+        {
+          "name": "Hsuan-Chu Lin",
+          "given": "Hsuan-Chu",
+          "surname": "Lin"
+        },
+        {
+          "name": "Tz-Ying Wu",
+          "given": "Tz-Ying",
+          "surname": "Wu"
+        },
+        {
+          "name": "Yunsheng Li",
+          "given": "Yunsheng",
+          "surname": "Li"
+        },
+        {
+          "name": "Nuno Vasconcelos",
+          "given": "Nuno",
+          "surname": "Vasconcelos"
+        }
+      ],
+      "year": 2020,
+      "venue": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5666",
+          "title": "Xu et al. - 2020 - Explainable Object-Induced Action Decision for Aut.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "http://arxiv.org/abs/1806.00069",
+      "type": "other",
+      "title": "Explaining Explanations: An Overview of Interpretability of Machine Learning",
+      "authors": [
+        {
+          "name": "Leilani H. Gilpin",
+          "given": "Leilani H.",
+          "surname": "Gilpin"
+        },
+        {
+          "name": "David Bau",
+          "given": "David",
+          "surname": "Bau"
+        },
+        {
+          "name": "Ben Z. Yuan",
+          "given": "Ben Z.",
+          "surname": "Yuan"
+        },
+        {
+          "name": "Ayesha Bajwa",
+          "given": "Ayesha",
+          "surname": "Bajwa"
+        },
+        {
+          "name": "Michael Specter",
+          "given": "Michael",
+          "surname": "Specter"
+        },
+        {
+          "name": "Lalana Kagal",
+          "given": "Lalana",
+          "surname": "Kagal"
+        }
+      ],
+      "year": 2019,
+      "venue": "arXiv:1806.00069 [cs, stat]",
+      "abstract": "There has recently been a surge of work in explanatory artificial intelligence (XAI). This research area tackles the important problem that complex machines and algorithms often cannot provide insights into their behavior and thought processes. XAI allows users and parts of the internal system to be more transparent, providing explanations of their decisions in some level of detail. These explanations are important to ensure algorithmic fairness, identify potential bias/problems in the training data, and to ensure that the algorithms perform as expected. However, explanations produced by these systems is neither standardized nor systematically assessed. In an effort to create best practices and identify open challenges, we provide our definition of explainability and show how it can be used to classify existing literature. We discuss why current approaches to explanatory methods especially for deep neural networks are insufficient. Finally, based on our survey, we conclude with suggested future research directions for explanatory artificial intelligence.",
+      "keywords": [
+        "machine learning",
+        "artificial intelligence",
+        "neural network",
+        "algorithm"
+      ],
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_4705",
+          "title": "Gilpin et al_2019_Explaining Explanations - An Overview of Interpretability of Machine Learning.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5684",
+      "type": "other",
+      "title": "Explanations in Autonomous Driving: A Survey",
+      "authors": [
+        {
+          "name": "Daniel Omeiza",
+          "given": "Daniel",
+          "surname": "Omeiza"
+        },
+        {
+          "name": "Helena Webb",
+          "given": "Helena",
+          "surname": "Webb"
+        },
+        {
+          "name": "Marina Jirotka",
+          "given": "Marina",
+          "surname": "Jirotka"
+        },
+        {
+          "name": "Lars Kunze",
+          "given": "Lars",
+          "surname": "Kunze"
+        }
+      ],
+      "year": 2022,
+      "venue": "IEEE Transactions on Intelligent Transportation Systems",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5685",
+          "title": "Full Text",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "urn:isbn:978-1-4503-5971-9",
+      "type": "conference",
+      "title": "I Drive - You Trust: Explaining Driving Behavior Of Autonomous Cars",
+      "authors": [
+        {
+          "name": "Gesa Wiegand",
+          "given": "Gesa",
+          "surname": "Wiegand"
+        },
+        {
+          "name": "Matthias Schmidmaier",
+          "given": "Matthias",
+          "surname": "Schmidmaier"
+        },
+        {
+          "name": "Thomas Weber",
+          "given": "Thomas",
+          "surname": "Weber"
+        },
+        {
+          "name": "Yuanting Liu",
+          "given": "Yuanting",
+          "surname": "Liu"
+        },
+        {
+          "name": "Heinrich Hussmann",
+          "given": "Heinrich",
+          "surname": "Hussmann"
+        }
+      ],
+      "year": 2019,
+      "venue": "Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems",
+      "abstract": "Driving in autonomous cars requires trust, especially in case of unexpected driving behavior of the vehicle. This work evaluates mental models that experts and non-expert users have of autonomous driving to provide an explanation of the vehicle's past driving behavior. We identified a target mental model that enhances the user's mental model by adding key components from the mental model experts have. To construct this target mental model and to evaluate a prototype of an explanation visualization we conducted interviews (N=8) and a user study (N=16). The explanation consists of abstract visualizations of different elements, representing the autonomous system's components. We explore the relevance of the explanation's individual elements and their influence on the user's situation awareness. The results show that displaying the detected objects and their predicted motion was most important to understand a situation. After seeing the explanation, the user's level of situation awareness increased significantly.",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5668",
+          "title": "Wiegand et al. - 2019 - I Drive - You Trust Explaining Driving Behavior O.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "http://arxiv.org/abs/1809.04843",
+      "type": "other",
+      "title": "On Offline Evaluation of Vision-based Driving Models",
+      "authors": [
+        {
+          "name": "Felipe Codevilla",
+          "given": "Felipe",
+          "surname": "Codevilla"
+        },
+        {
+          "name": "Antonio M. López",
+          "given": "Antonio M.",
+          "surname": "López"
+        },
+        {
+          "name": "Vladlen Koltun",
+          "given": "Vladlen",
+          "surname": "Koltun"
+        },
+        {
+          "name": "Alexey Dosovitskiy",
+          "given": "Alexey",
+          "surname": "Dosovitskiy"
+        }
+      ],
+      "year": 2018,
+      "venue": "arXiv",
+      "abstract": "Autonomous driving models should ideally be evaluated by deploying them on a ﬂeet of physical vehicles in the real world. Unfortunately, this approach is not practical for the vast majority of researchers. An attractive alternative is to evaluate models ofﬂine, on a pre-collected validation dataset with ground truth annotation. In this paper, we investigate the relation between various online and ofﬂine metrics for evaluation of autonomous driving models. We ﬁnd that ofﬂine prediction error is not necessarily correlated with driving quality, and two models with identical prediction error can differ dramatically in their driving performance. We show that the correlation of ofﬂine evaluation with driving quality can be signiﬁcantly improved by selecting an appropriate validation dataset and suitable ofﬂine metrics.",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5718",
+          "title": "Codevilla et al_2018_On Offline Evaluation of Vision-based Driving Models.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5704",
+      "type": "conference",
+      "title": "Towards Accountability: Providing Intelligible Explanations in Autonomous Driving",
+      "authors": [
+        {
+          "name": "Daniel Omeiza",
+          "given": "Daniel",
+          "surname": "Omeiza"
+        },
+        {
+          "name": "Helena Web",
+          "given": "Helena",
+          "surname": "Web"
+        },
+        {
+          "name": "Marina Jirotka",
+          "given": "Marina",
+          "surname": "Jirotka"
+        },
+        {
+          "name": "Lars Kunze",
+          "given": "Lars",
+          "surname": "Kunze"
+        }
+      ],
+      "year": 2021,
+      "venue": "2021 IEEE Intelligent Vehicles Symposium (IV)",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5705",
+          "title": "Submitted Version",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5663",
+      "type": "other",
+      "title": "What and When to Explain? A Survey of the Impact of Explanation on Attitudes Toward Adopting Automated Vehicles",
+      "authors": [
+        {
+          "name": "Qiaoning Zhang",
+          "given": "Qiaoning",
+          "surname": "Zhang"
+        },
+        {
+          "name": "X. Jessie Yang",
+          "given": "X. Jessie",
+          "surname": "Yang"
+        },
+        {
+          "name": "Lionel P. Robert",
+          "given": "Lionel P.",
+          "surname": "Robert"
+        }
+      ],
+      "year": 2021,
+      "venue": "IEEE Access",
+      "abstract": "Automated vehicles (AV) have the potential to decrease driving-related accidents and traffic congestion and to reduce fuel consumption and carbon emissions. However, because of a lack of trust and acceptance, their widespread adoption is far from certain. One approach researchers have taken to promote trust and acceptance of AVs is to decrease the uncertainty associated with their actions by providing explanations. AV explanations are the reasons the AV provides to make its actions easier to understand. There is now a nascent but rapidly growing body of research on AV explanations. Yet, answers to basic questions like whether or when AV explanations are effective still elude us. To better understand what has been done and what should be done with regard to AV explanations, we present a review of the literature, discuss the findings and identify several important future research directions.",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5664",
+          "title": "Zhang et al. 2021 (published).pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5714",
+      "type": "other",
+      "title": "What drives the acceptance of autonomous driving? An investigation of acceptance factors from an end-user's perspective",
+      "authors": [
+        {
+          "name": "Ilja Nastjuk",
+          "given": "Ilja",
+          "surname": "Nastjuk"
+        },
+        {
+          "name": "Bernd Herrenkind",
+          "given": "Bernd",
+          "surname": "Herrenkind"
+        },
+        {
+          "name": "Mauricio Marrone",
+          "given": "Mauricio",
+          "surname": "Marrone"
+        },
+        {
+          "name": "Alfred Brendel",
+          "given": "Alfred",
+          "surname": "Brendel"
+        },
+        {
+          "name": "Lutz Kolbe",
+          "given": "Lutz",
+          "surname": "Kolbe"
+        }
+      ],
+      "year": 2020,
+      "venue": "Technological Forecasting and Social Change",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5715",
+          "title": "Full Text",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "urn:isbn:978-1-4503-7516-0",
+      "type": "conference",
+      "title": "“I’d like an Explanation for That!”Exploring Reactions to Unexpected Autonomous Driving",
+      "authors": [
+        {
+          "name": "Gesa Wiegand",
+          "given": "Gesa",
+          "surname": "Wiegand"
+        },
+        {
+          "name": "Malin Eiband",
+          "given": "Malin",
+          "surname": "Eiband"
+        },
+        {
+          "name": "Maximilian Haubelt",
+          "given": "Maximilian",
+          "surname": "Haubelt"
+        },
+        {
+          "name": "Heinrich Hussmann",
+          "given": "Heinrich",
+          "surname": "Hussmann"
+        }
+      ],
+      "year": 2020,
+      "venue": "22nd International Conference on Human-Computer Interaction with Mobile Devices and Services",
+      "abstract": "Autonomous vehicles are complex systems that may behave in unexpected ways. From the drivers’ perspective, this can cause stress and lower trust and acceptance of autonomous driving. Prior work has shown that explanation of system behavior can mitigate these negative effects. Nevertheless, it remains unclear in which situations drivers actually need an explanation and what kind of interaction is relevant to them. Using thematic analysis of real-world experience reports, we first identified 17 situations in which a vehicle behaved unexpectedly. We then conducted a think-aloud study (N = 26) in a driving simulator to validate these situations and enrich them with qualitative insights about drivers’ need for explanation. We identified six categories to describe the main concerns and topics during unexpected driving behavior (emotion and evaluation, interpretation and reason, vehicle capability, interaction, future driving prediction and explanation request times). Based on these categories, we suggest design implications for autonomous vehicles, in particular related to collaboration insights, user mental models and explanation requests.",
+      "collections": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127"
+      ],
+      "attachments": [
+        {
+          "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5675",
+          "title": "Wiegand et al. - 2020 - “I’d like an Explanation for That!”Exploring React.pdf",
+          "type": "application/pdf",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}

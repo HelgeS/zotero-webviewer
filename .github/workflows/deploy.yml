@@ -1,0 +1,136 @@
+name: Build and Deploy Literature Webviewer
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '**.rdf'
+      - '**.xml'
+      - 'src/**'
+      - 'templates/**'
+      - 'pyproject.toml'
+      - '.github/workflows/deploy.yml'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      rdf_file:
+        description: 'RDF file to process (relative to repository root)'
+        required: false
+        default: 'sample.rdf'
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install uv
+      uses: astral-sh/setup-uv@v2
+      with:
+        version: "latest"
+        
+    - name: Install dependencies
+      run: |
+        uv sync
+        
+    - name: Find RDF file
+      id: find-rdf
+      run: |
+        # Use workflow input if provided, otherwise find RDF files
+        if [ -n "${{ github.event.inputs.rdf_file }}" ]; then
+          RDF_FILE="${{ github.event.inputs.rdf_file }}"
+        else
+          # Look for RDF files in common locations
+          if [ -f "full.rdf" ]; then
+            RDF_FILE="full.rdf"
+          elif [ -f "sample.rdf" ]; then
+            RDF_FILE="sample.rdf"
+          elif [ -f "library.rdf" ]; then
+            RDF_FILE="library.rdf"
+          else
+            # Find any RDF file
+            RDF_FILE=$(find . -name "*.rdf" -o -name "*.xml" | head -1)
+          fi
+        fi
+        
+        if [ -z "$RDF_FILE" ] || [ ! -f "$RDF_FILE" ]; then
+          echo "No RDF file found. Please ensure an RDF export file is present in the repository."
+          exit 1
+        fi
+        
+        echo "rdf_file=$RDF_FILE" >> $GITHUB_OUTPUT
+        echo "Using RDF file: $RDF_FILE"
+        
+    - name: Build literature webviewer
+      run: |
+        uv run literature-webviewer build \
+          --input "${{ steps.find-rdf.outputs.rdf_file }}" \
+          --output "dist" \
+          --production \
+          --validate \
+          --verbose
+          
+    - name: Verify build output
+      run: |
+        echo "Build output contents:"
+        ls -la dist/
+        
+        if [ -d "dist/data" ]; then
+          echo "Data files:"
+          ls -la dist/data/
+        fi
+        
+        # Check required files
+        for file in index.html styles.css app.js; do
+          if [ ! -f "dist/$file" ]; then
+            echo "Error: Required file $file not found"
+            exit 1
+          fi
+        done
+        
+        echo "Build verification successful"
+        
+    - name: Setup Pages
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './dist'
+
+  deploy:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      
+    - name: Output deployment URL
+      run: |
+        echo "Literature webviewer deployed to: ${{ steps.deployment.outputs.page_url }}"

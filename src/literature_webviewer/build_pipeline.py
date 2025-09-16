@@ -31,10 +31,11 @@ except ImportError:
         def join(self):
             pass
 
-from .rdf_parser import RDFParser, RDFParsingError
-from .data_transformer import DataTransformer, DataTransformationError
+from .rdf_parser import RDFParser, RDFParsingError, RDFValidationError, RDFDataIntegrityError
+from .data_transformer import DataTransformer, DataTransformationError, DataValidationError, DataIntegrityError
 from .collection_builder import CollectionHierarchyBuilder, CollectionHierarchyError
 from .json_generator import JSONGenerator, JSONGenerationError
+from .site_generator import SiteGenerator, SiteGenerationError, SiteConfig
 
 
 @dataclass
@@ -47,6 +48,7 @@ class BuildConfig:
     validate_output: bool = True
     incremental: bool = True
     watch_mode: bool = False
+    production: bool = False
     verbose: bool = False
 
 
@@ -121,6 +123,7 @@ class BuildPipeline:
         self.transformer = DataTransformer()
         self.hierarchy_builder = CollectionHierarchyBuilder()
         self.json_generator = JSONGenerator(str(Path(config.output_dir) / "data"))
+        self.site_generator = SiteGenerator(config.output_dir)
         
         # Build state tracking
         self._last_build_hash: Optional[str] = None
@@ -190,6 +193,18 @@ class BuildPipeline:
                 items_data = self.parser.extract_bibliography_items(graph)
                 collections_data = self.parser.extract_collections(graph)
                 
+                # Validate extracted data integrity
+                data_integrity_issues = self.parser.validate_bibliography_data_integrity(items_data)
+                if data_integrity_issues:
+                    for issue in data_integrity_issues:
+                        if "missing required field" in issue.lower() or "duplicate" in issue.lower():
+                            errors.append(f"Data integrity error: {issue}")
+                        else:
+                            warnings.append(f"Data integrity warning: {issue}")
+                
+                # Assign collection references to items
+                self.parser.assign_items_to_collections(items_data, collections_data)
+                
                 if not items_data:
                     warnings.append("No bibliography items found in RDF file")
                 if not collections_data:
@@ -203,12 +218,21 @@ class BuildPipeline:
             update_progress(40, "Transforming and normalizing data")
             try:
                 items = []
+                transformation_errors = []
+                
                 for item_data in items_data:
                     try:
                         item = self.transformer.transform_bibliography_item(item_data)
                         items.append(item)
                     except DataTransformationError as e:
-                        warnings.append(f"Failed to transform item {item_data.get('id', 'unknown')}: {str(e)}")
+                        item_id = item_data.get('id', 'unknown')
+                        error_msg = f"Failed to transform item {item_id}: {str(e)}"
+                        
+                        # Distinguish between critical errors and warnings
+                        if "missing required" in str(e).lower() or "validation" in str(e).lower():
+                            transformation_errors.append(error_msg)
+                        else:
+                            warnings.append(error_msg)
                 
                 collections = []
                 for col_data in collections_data:
@@ -217,7 +241,27 @@ class BuildPipeline:
                         collections.append(collection)
                     except DataTransformationError as e:
                         warnings.append(f"Failed to transform collection {col_data.get('id', 'unknown')}: {str(e)}")
+                
+                # If we have critical transformation errors, fail the build
+                if transformation_errors:
+                    for error in transformation_errors:
+                        errors.append(error)
+                    raise BuildPipelineError(f"Critical data transformation errors: {len(transformation_errors)} items failed")
+                
+                # Validate transformed data consistency
+                validation_issues = self.transformer.validate_transformed_data(items, collections)
+                if validation_issues:
+                    for issue in validation_issues:
+                        if "duplicate" in issue.lower() and "id" in issue.lower():
+                            errors.append(f"Data consistency error: {issue}")
+                        else:
+                            warnings.append(f"Data consistency warning: {issue}")
+                
+                if not items:
+                    raise BuildPipelineError("No valid bibliography items after transformation")
                         
+            except (DataTransformationError, BuildPipelineError):
+                raise
             except Exception as e:
                 errors.append(f"Data transformation failed: {str(e)}")
                 raise BuildPipelineError(f"Data transformation failed: {str(e)}")
@@ -257,8 +301,22 @@ class BuildPipeline:
             if not self.config.data_only:
                 update_progress(85, "Generating static website files")
                 try:
-                    # TODO: Implement static site generation
-                    warnings.append("Static site generation not yet implemented")
+                    # Create site configuration
+                    site_config = SiteConfig(
+                        title="Literature Collection Webviewer",
+                        collection_title="Literature Collection",
+                        description="Interactive browser for academic literature collections exported from Zotero"
+                    )
+                    
+                    # Generate static site
+                    site_files = self.site_generator.generate_site(site_config)
+                    files_generated.extend(site_files)
+                    
+                    self.logger.info(f"Generated {len(site_files)} static site files")
+                    
+                except SiteGenerationError as e:
+                    errors.append(f"Static site generation failed: {str(e)}")
+                    raise BuildPipelineError(f"Static site generation failed: {str(e)}")
                 except Exception as e:
                     warnings.append(f"Static site generation failed: {str(e)}")
             
@@ -271,6 +329,33 @@ class BuildPipeline:
                     errors.append(f"Output validation failed: {str(e)}")
                     # Don't fail the build for validation errors, just warn
                     warnings.append(str(e))
+            
+            # Step 8: Production optimization (if enabled)
+            if self.config.production:
+                update_progress(95, "Optimizing for production")
+                try:
+                    from .production_optimizer import ProductionOptimizer, DeploymentHelper
+                    
+                    optimizer = ProductionOptimizer(self.config.output_dir)
+                    optimization_report = optimizer.optimize_all()
+                    
+                    # Create deployment configuration
+                    deployment_helper = DeploymentHelper(self.config.output_dir)
+                    deployment_helper.create_github_pages_config()
+                    deployment_info = deployment_helper.create_deployment_info()
+                    
+                    # Validate deployment
+                    deployment_errors = deployment_helper.validate_deployment()
+                    if deployment_errors:
+                        warnings.extend([f"Deployment validation: {error}" for error in deployment_errors])
+                    
+                    # Add optimization info to warnings for reporting
+                    total_savings = optimization_report.get('total_savings', 0)
+                    total_ratio = optimization_report.get('total_compression_ratio', 0)
+                    warnings.append(f"Production optimization: {total_savings} bytes saved ({total_ratio:.1f}% reduction)")
+                    
+                except Exception as e:
+                    warnings.append(f"Production optimization failed: {str(e)}")
             
             update_progress(100, "Build completed successfully")
             

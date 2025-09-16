@@ -2648,3 +2648,488 @@ const CollectionTree = {
         }
     }
 };
+
+
+/**
+ * Detailed Item View Component for displaying complete bibliography information
+ */
+const DetailedItemView = {
+    modal: null,
+    modalTitle: null,
+    modalBody: null,
+    modalClose: null,
+    currentItem: null,
+    
+    /**
+     * Initialize the detailed item view component
+     */
+    init() {
+        this.modal = document.getElementById('item-modal');
+        this.modalTitle = document.getElementById('modal-title');
+        this.modalBody = document.querySelector('.modal-body');
+        this.modalClose = document.querySelector('.modal-close');
+        
+        if (this.modal) {
+            this.initializeEventHandlers();
+        }
+    },
+    
+    /**
+     * Initialize event handlers for modal functionality
+     */
+    initializeEventHandlers() {
+        // Close modal on close button click
+        if (this.modalClose) {
+            this.modalClose.addEventListener('click', () => {
+                this.closeModal();
+            });
+        }
+        
+        // Close modal on overlay click
+        const modalOverlay = this.modal.querySelector('.modal-overlay');
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', () => {
+                this.closeModal();
+            });
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isModalOpen()) {
+                this.closeModal();
+            }
+        });
+        
+        // Handle item clicks in bibliography table
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('item-title-link') || 
+                e.target.closest('.item-title-link')) {
+                e.preventDefault();
+                const itemId = e.target.getAttribute('data-item-id') || 
+                              e.target.closest('.item-title-link').getAttribute('data-item-id');
+                if (itemId) {
+                    this.showItemDetails(itemId);
+                }
+            }
+            
+            // Handle "View Details" button clicks
+            if (e.target.classList.contains('action-btn') && 
+                e.target.textContent.includes('Details')) {
+                e.preventDefault();
+                const row = e.target.closest('tr');
+                const itemId = row ? row.getAttribute('data-item-id') : null;
+                if (itemId) {
+                    this.showItemDetails(itemId);
+                }
+            }
+        });
+    },
+    
+    /**
+     * Show detailed information for a bibliography item
+     */
+    showItemDetails(itemId) {
+        // Find the item in the bibliography data
+        const item = this.findItemById(itemId);
+        if (!item) {
+            console.error('Item not found:', itemId);
+            return;
+        }
+        
+        this.currentItem = item;
+        this.renderItemDetails(item);
+        this.openModal();
+        
+        // Announce to screen readers
+        this.announceModalOpen(item.title);
+    },
+    
+    /**
+     * Find an item by ID in the bibliography data
+     */
+    findItemById(itemId) {
+        if (window.AppState && window.AppState.bibliography) {
+            return window.AppState.bibliography.find(item => item.id === itemId);
+        }
+        return null;
+    },
+    
+    /**
+     * Render detailed item information in the modal
+     */
+    renderItemDetails(item) {
+        if (!this.modalTitle || !this.modalBody) return;
+        
+        // Set modal title
+        this.modalTitle.textContent = 'Item Details';
+        
+        // Generate detailed content
+        const content = this.generateDetailedContent(item);
+        this.modalBody.innerHTML = content;
+        
+        // Initialize copy-to-clipboard functionality
+        this.initializeCopyButtons();
+    },
+    
+    /**
+     * Generate HTML content for detailed item view
+     */
+    generateDetailedContent(item) {
+        const authors = this.formatAuthors(item.authors || []);
+        const year = item.year || 'Unknown';
+        const venue = item.venue || 'Unknown venue';
+        const type = item.type || 'unknown';
+        const abstract = item.abstract || 'No abstract available';
+        const keywords = (item.keywords || []).join(', ') || 'No keywords';
+        const collections = this.getItemCollections(item);
+        
+        return `
+            <div class="item-details">
+                <div class="item-header">
+                    <h3 class="item-detail-title">${this.escapeHtml(item.title || 'Untitled')}</h3>
+                    <div class="item-meta">
+                        <span class="item-type-badge type-${type}">${type.toUpperCase()}</span>
+                        <span class="item-year">${year}</span>
+                    </div>
+                </div>
+                
+                <div class="item-section">
+                    <h4>Authors</h4>
+                    <p class="item-authors">${authors}</p>
+                    <button class="copy-btn" data-copy-text="${this.escapeHtml(authors)}" title="Copy authors">
+                        📋 Copy
+                    </button>
+                </div>
+                
+                <div class="item-section">
+                    <h4>Publication Details</h4>
+                    <p><strong>Venue:</strong> ${this.escapeHtml(venue)}</p>
+                    <p><strong>Year:</strong> ${year}</p>
+                    <p><strong>Type:</strong> ${type}</p>
+                </div>
+                
+                ${item.abstract ? `
+                <div class="item-section">
+                    <h4>Abstract</h4>
+                    <div class="item-abstract">${this.escapeHtml(abstract)}</div>
+                    <button class="copy-btn" data-copy-text="${this.escapeHtml(abstract)}" title="Copy abstract">
+                        📋 Copy Abstract
+                    </button>
+                </div>
+                ` : ''}
+                
+                ${item.keywords && item.keywords.length > 0 ? `
+                <div class="item-section">
+                    <h4>Keywords</h4>
+                    <div class="item-keywords">
+                        ${item.keywords.map(keyword => 
+                            `<span class="keyword-tag">${this.escapeHtml(keyword)}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+                ` : ''}
+                
+                ${collections.length > 0 ? `
+                <div class="item-section">
+                    <h4>Collections</h4>
+                    <div class="item-collections">
+                        ${collections.map(collection => 
+                            `<span class="collection-tag">${this.escapeHtml(collection)}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+                ` : ''}
+                
+                ${this.generateLinksSection(item)}
+                
+                <div class="item-actions">
+                    <button class="copy-btn primary" data-copy-citation="${item.id}" title="Copy citation">
+                        📋 Copy Citation
+                    </button>
+                    <button class="copy-btn" data-copy-bibtex="${item.id}" title="Copy BibTeX">
+                        📋 Copy BibTeX
+                    </button>
+                    ${item.url ? `
+                    <a href="${this.escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="external-link">
+                        🔗 Open Link
+                    </a>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    },
+    
+    /**
+     * Generate links section for DOI, URL, etc.
+     */
+    generateLinksSection(item) {
+        const links = [];
+        
+        if (item.doi) {
+            links.push(`<a href="https://doi.org/${this.escapeHtml(item.doi)}" target="_blank" rel="noopener noreferrer">DOI: ${this.escapeHtml(item.doi)}</a>`);
+        }
+        
+        if (item.url && item.url !== item.doi) {
+            links.push(`<a href="${this.escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">URL</a>`);
+        }
+        
+        if (item.attachments && item.attachments.length > 0) {
+            item.attachments.forEach(attachment => {
+                if (attachment.url) {
+                    links.push(`<a href="${this.escapeHtml(attachment.url)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(attachment.title || 'Attachment')}</a>`);
+                }
+            });
+        }
+        
+        if (links.length === 0) {
+            return '';
+        }
+        
+        return `
+            <div class="item-section">
+                <h4>Links</h4>
+                <div class="item-links">
+                    ${links.join('<br>')}
+                </div>
+            </div>
+        `;
+    },
+    
+    /**
+     * Get collection names for an item
+     */
+    getItemCollections(item) {
+        if (!item.collections || !window.AppState || !window.AppState.collections) {
+            return [];
+        }
+        
+        return item.collections
+            .map(collectionId => {
+                const collection = window.AppState.collections[collectionId];
+                return collection ? collection.title : null;
+            })
+            .filter(title => title !== null);
+    },
+    
+    /**
+     * Format authors list
+     */
+    formatAuthors(authors) {
+        if (!authors || authors.length === 0) {
+            return 'Unknown authors';
+        }
+        
+        return authors.map(author => author.fullName || 'Unknown').join(', ');
+    },
+    
+    /**
+     * Initialize copy-to-clipboard functionality
+     */
+    initializeCopyButtons() {
+        const copyButtons = this.modalBody.querySelectorAll('.copy-btn');
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                let textToCopy = '';
+                
+                if (button.hasAttribute('data-copy-text')) {
+                    textToCopy = button.getAttribute('data-copy-text');
+                } else if (button.hasAttribute('data-copy-citation')) {
+                    textToCopy = this.generateCitation(this.currentItem);
+                } else if (button.hasAttribute('data-copy-bibtex')) {
+                    textToCopy = this.generateBibTeX(this.currentItem);
+                }
+                
+                if (textToCopy) {
+                    this.copyToClipboard(textToCopy, button);
+                }
+            });
+        });
+    },
+    
+    /**
+     * Generate citation text for an item
+     */
+    generateCitation(item) {
+        if (!item) return '';
+        
+        const authors = this.formatAuthors(item.authors || []);
+        const year = item.year || 'n.d.';
+        const title = item.title || 'Untitled';
+        const venue = item.venue || '';
+        
+        return `${authors} (${year}). ${title}. ${venue}`.trim();
+    },
+    
+    /**
+     * Generate BibTeX entry for an item
+     */
+    generateBibTeX(item) {
+        if (!item) return '';
+        
+        const type = item.type === 'article' ? 'article' : 'misc';
+        const key = this.generateBibTeXKey(item);
+        const authors = (item.authors || []).map(author => author.fullName || 'Unknown').join(' and ');
+        const year = item.year || '';
+        const title = item.title || 'Untitled';
+        const venue = item.venue || '';
+        
+        let bibtex = `@${type}{${key},
+`;
+        bibtex += `  title={${title}},
+`;
+        if (authors) bibtex += `  author={${authors}},
+`;
+        if (year) bibtex += `  year={${year}},
+`;
+        if (venue) {
+            if (item.type === 'article') {
+                bibtex += `  journal={${venue}},
+`;
+            } else {
+                bibtex += `  publisher={${venue}},
+`;
+            }
+        }
+        if (item.doi) bibtex += `  doi={${item.doi}},
+`;
+        if (item.url) bibtex += `  url={${item.url}},
+`;
+        bibtex += '}';
+        
+        return bibtex;
+    },
+    
+    /**
+     * Generate BibTeX key for an item
+     */
+    generateBibTeXKey(item) {
+        const firstAuthor = item.authors && item.authors[0] ? 
+            item.authors[0].surname || 'Unknown' : 'Unknown';
+        const year = item.year || 'Unknown';
+        const titleWords = (item.title || 'Untitled').split(' ').slice(0, 2);
+        
+        return `${firstAuthor}${year}${titleWords.join('')}`.replace(/[^a-zA-Z0-9]/g, '');
+    },
+    
+    /**
+     * Copy text to clipboard
+     */
+    async copyToClipboard(text, button) {
+        try {
+            await navigator.clipboard.writeText(text);
+            this.showCopyFeedback(button, 'Copied!');
+        } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                this.showCopyFeedback(button, 'Copied!');
+            } catch (fallbackErr) {
+                this.showCopyFeedback(button, 'Copy failed');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+    },
+    
+    /**
+     * Show visual feedback for copy operation
+     */
+    showCopyFeedback(button, message) {
+        const originalText = button.textContent;
+        button.textContent = message;
+        button.classList.add('copy-success');
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copy-success');
+        }, 2000);
+    },
+    
+    /**
+     * Open the modal
+     */
+    openModal() {
+        if (this.modal) {
+            this.modal.classList.add('active');
+            this.modal.setAttribute('aria-hidden', 'false');
+            
+            // Focus the close button for accessibility
+            if (this.modalClose) {
+                this.modalClose.focus();
+            }
+            
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+    },
+    
+    /**
+     * Close the modal
+     */
+    closeModal() {
+        if (this.modal) {
+            this.modal.classList.remove('active');
+            this.modal.setAttribute('aria-hidden', 'true');
+            
+            // Restore body scrolling
+            document.body.style.overflow = '';
+            
+            // Clear current item
+            this.currentItem = null;
+        }
+    },
+    
+    /**
+     * Check if modal is currently open
+     */
+    isModalOpen() {
+        return this.modal && this.modal.classList.contains('active');
+    },
+    
+    /**
+     * Announce modal opening to screen readers
+     */
+    announceModalOpen(itemTitle) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'visually-hidden';
+        announcement.textContent = `Opened detailed view for ${itemTitle}`;
+        
+        document.body.appendChild(announcement);
+        setTimeout(() => {
+            if (document.body.contains(announcement)) {
+                document.body.removeChild(announcement);
+            }
+        }, 1000);
+    },
+    
+    /**
+     * Escape HTML characters
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+};
+
+// Make DetailedItemView globally available
+window.DetailedItemView = DetailedItemView;
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        DetailedItemView.init();
+    });
+} else {
+    DetailedItemView.init();
+}

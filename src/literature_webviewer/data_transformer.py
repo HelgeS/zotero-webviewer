@@ -127,6 +127,16 @@ class DataTransformationError(Exception):
     pass
 
 
+class DataValidationError(DataTransformationError):
+    """Exception raised when data validation fails."""
+    pass
+
+
+class DataIntegrityError(DataTransformationError):
+    """Exception raised when data integrity checks fail."""
+    pass
+
+
 class DataTransformer:
     """Transforms raw RDF data into structured models."""
     
@@ -145,52 +155,94 @@ class DataTransformer:
             
         Raises:
             DataTransformationError: If transformation fails
+            DataValidationError: If required data is missing or invalid
         """
         try:
-            # Normalize item type
+            # Validate required fields
+            if not item_data.get("id"):
+                raise DataValidationError("Bibliography item missing required 'id' field")
+            
+            item_id = item_data["id"]
+            
+            # Validate and clean title (required field)
+            title = self._clean_text(item_data.get("title", ""))
+            if not title:
+                # Try to generate a title from available data
+                title = self._generate_fallback_title(item_data)
+                if not title:
+                    raise DataValidationError(f"Bibliography item {item_id} has no title and cannot generate fallback")
+                self.logger.warning(f"Generated fallback title for item {item_id}: {title}")
+            
+            # Normalize item type with validation
             item_type = self._normalize_item_type(item_data.get("type", "other"))
             
-            # Transform authors
+            # Transform authors with validation
             authors = []
-            for author_data in item_data.get("authors", []):
-                author = self._transform_author(author_data)
-                if author:
-                    authors.append(author)
+            author_errors = []
+            for i, author_data in enumerate(item_data.get("authors", [])):
+                try:
+                    author = self._transform_author(author_data)
+                    if author:
+                        authors.append(author)
+                    else:
+                        author_errors.append(f"Author {i} could not be processed")
+                except Exception as e:
+                    author_errors.append(f"Author {i} transformation failed: {str(e)}")
             
-            # Transform attachments
+            if author_errors:
+                self.logger.warning(f"Item {item_id} author issues: {'; '.join(author_errors)}")
+            
+            # Transform attachments with error handling
             attachments = []
-            for attachment_data in item_data.get("attachments", []):
-                attachment = self._transform_attachment(attachment_data)
-                if attachment:
-                    attachments.append(attachment)
+            attachment_errors = []
+            for i, attachment_data in enumerate(item_data.get("attachments", [])):
+                try:
+                    attachment = self._transform_attachment(attachment_data)
+                    if attachment:
+                        attachments.append(attachment)
+                except Exception as e:
+                    attachment_errors.append(f"Attachment {i} transformation failed: {str(e)}")
+            
+            if attachment_errors:
+                self.logger.warning(f"Item {item_id} attachment issues: {'; '.join(attachment_errors)}")
             
             # Clean and normalize text fields
-            title = self._clean_text(item_data.get("title", ""))
             venue = self._clean_text(item_data.get("venue", ""))
             abstract = self._clean_text(item_data.get("abstract", ""))
+            
+            # Validate and normalize year
+            year = self._validate_year(item_data.get("year"), item_id)
             
             # Extract keywords from abstract and title if not provided
             keywords = item_data.get("keywords", [])
             if not keywords:
                 keywords = self._extract_keywords(title, abstract)
             
+            # Validate URLs
+            doi = self._validate_and_clean_url(item_data.get("doi", ""), "DOI", item_id)
+            url = self._validate_and_clean_url(item_data.get("url", ""), "URL", item_id)
+            
             return BibliographyItem(
-                id=item_data["id"],
+                id=item_id,
                 type=item_type,
                 title=title,
                 authors=authors,
-                year=item_data.get("year"),
+                year=year,
                 venue=venue,
                 abstract=abstract,
-                doi=self._clean_url(item_data.get("doi", "")),
-                url=self._clean_url(item_data.get("url", "")),
+                doi=doi,
+                url=url,
                 keywords=keywords,
                 collections=item_data.get("collections", []),
                 attachments=attachments
             )
             
+        except (DataTransformationError, DataValidationError):
+            # Re-raise our custom exceptions
+            raise
         except Exception as e:
-            raise DataTransformationError(f"Failed to transform bibliography item: {str(e)}")
+            item_id = item_data.get("id", "unknown")
+            raise DataTransformationError(f"Failed to transform bibliography item {item_id}: {str(e)}")
     
     def transform_collection(self, collection_data: Dict[str, Any]) -> Collection:
         """
@@ -424,3 +476,206 @@ class DataTransformer:
                 keywords.append(keyword)
         
         return keywords[:10]  # Limit to 10 keywords
+    
+    def _generate_fallback_title(self, item_data: Dict[str, Any]) -> str:
+        """
+        Generate a fallback title when the original title is missing or empty.
+        
+        Args:
+            item_data: Raw item data dictionary
+            
+        Returns:
+            Generated fallback title or empty string if cannot generate
+        """
+        # Try to construct title from available data
+        authors = item_data.get("authors", [])
+        year = item_data.get("year")
+        venue = item_data.get("venue", "")
+        item_type = item_data.get("type", "item")
+        
+        title_parts = []
+        
+        # Add first author if available
+        if authors and len(authors) > 0:
+            first_author = authors[0]
+            author_name = first_author.get("surname") or first_author.get("full_name", "")
+            if author_name:
+                if len(authors) > 1:
+                    title_parts.append(f"{author_name} et al.")
+                else:
+                    title_parts.append(author_name)
+        
+        # Add year if available
+        if year:
+            title_parts.append(f"({year})")
+        
+        # Add venue or type
+        if venue:
+            title_parts.append(f"in {venue}")
+        else:
+            title_parts.append(f"[{item_type}]")
+        
+        if title_parts:
+            return " ".join(title_parts)
+        
+        # Last resort: use item ID
+        return f"Untitled item {item_data.get('id', 'unknown')}"
+    
+    def _validate_year(self, year: Any, item_id: str) -> Optional[int]:
+        """
+        Validate and normalize publication year.
+        
+        Args:
+            year: Year value from item data
+            item_id: Item ID for error reporting
+            
+        Returns:
+            Validated year as integer or None if invalid
+        """
+        if year is None:
+            return None
+        
+        try:
+            # Convert to integer if it's a string
+            if isinstance(year, str):
+                year = int(year.strip())
+            
+            if not isinstance(year, int):
+                self.logger.warning(f"Item {item_id} has non-numeric year: {year}")
+                return None
+            
+            # Validate reasonable year range
+            current_year = 2025  # Could be made dynamic
+            if year < 1000:
+                self.logger.warning(f"Item {item_id} has year too early: {year}")
+                return None
+            elif year > current_year + 5:  # Allow some future dates
+                self.logger.warning(f"Item {item_id} has year too far in future: {year}")
+                return None
+            
+            return year
+            
+        except (ValueError, TypeError):
+            self.logger.warning(f"Item {item_id} has invalid year format: {year}")
+            return None
+    
+    def _validate_and_clean_url(self, url: str, url_type: str, item_id: str) -> str:
+        """
+        Validate and clean URL strings with enhanced error handling.
+        
+        Args:
+            url: URL string to validate
+            url_type: Type of URL (for error reporting)
+            item_id: Item ID for error reporting
+            
+        Returns:
+            Cleaned and validated URL or empty string if invalid
+        """
+        if not url:
+            return ""
+        
+        url = url.strip()
+        
+        try:
+            # Basic URL validation
+            if url and not (url.startswith('http://') or url.startswith('https://')):
+                # If it looks like a DOI, add the DOI URL prefix
+                if url.startswith('10.') and '/' in url:
+                    url = f"https://doi.org/{url}"
+                elif url_type == "DOI" and not url.startswith('doi:'):
+                    # Handle bare DOI
+                    if '/' in url and '.' in url:
+                        url = f"https://doi.org/{url}"
+                    else:
+                        self.logger.warning(f"Item {item_id} has invalid {url_type} format: {url}")
+                        return ""
+                elif not url.startswith('www.') and not url.startswith('ftp://'):
+                    # Don't modify other formats, but warn about potentially invalid URLs
+                    if '.' not in url:
+                        self.logger.warning(f"Item {item_id} has potentially invalid {url_type}: {url}")
+                        return ""
+            
+            # Check for common URL issues
+            if len(url) > 2000:  # Very long URLs might be malformed
+                self.logger.warning(f"Item {item_id} has very long {url_type} (truncated): {url[:100]}...")
+                return url[:2000]
+            
+            # Check for suspicious characters
+            if any(char in url for char in [' ', '\n', '\r', '\t']):
+                self.logger.warning(f"Item {item_id} has {url_type} with whitespace characters")
+                url = re.sub(r'\s+', '', url)  # Remove whitespace
+            
+            return url
+            
+        except Exception as e:
+            self.logger.warning(f"Item {item_id} {url_type} validation failed: {str(e)}")
+            return ""
+    
+    def validate_transformed_data(self, items: List[BibliographyItem], collections: List[Collection]) -> List[str]:
+        """
+        Validate transformed data for consistency and integrity.
+        
+        Args:
+            items: List of transformed bibliography items
+            collections: List of transformed collections
+            
+        Returns:
+            List of validation issues found
+        """
+        issues = []
+        
+        if not items:
+            issues.append("No bibliography items after transformation")
+            return issues
+        
+        # Validate items
+        item_ids = set()
+        duplicate_titles = {}
+        
+        for item in items:
+            # Check for duplicate IDs
+            if item.id in item_ids:
+                issues.append(f"Duplicate item ID: {item.id}")
+            item_ids.add(item.id)
+            
+            # Check for potential duplicate titles
+            title_key = item.title.lower().strip()
+            if title_key in duplicate_titles:
+                duplicate_titles[title_key].append(item.id)
+            else:
+                duplicate_titles[title_key] = [item.id]
+            
+            # Validate item data
+            if not item.title:
+                issues.append(f"Item {item.id} has empty title")
+            
+            if not item.authors:
+                # This is a warning, not an error
+                pass
+            
+            if item.year and (item.year < 1000 or item.year > 2030):
+                issues.append(f"Item {item.id} has suspicious year: {item.year}")
+        
+        # Report potential duplicates
+        for title, ids in duplicate_titles.items():
+            if len(ids) > 1:
+                issues.append(f"Potential duplicate titles: {title} (items: {', '.join(ids)})")
+        
+        # Validate collections
+        if collections:
+            collection_ids = set()
+            for collection in collections:
+                if collection.id in collection_ids:
+                    issues.append(f"Duplicate collection ID: {collection.id}")
+                collection_ids.add(collection.id)
+                
+                if not collection.title:
+                    issues.append(f"Collection {collection.id} has empty title")
+        
+        # Cross-validate collection references
+        for item in items:
+            for collection_id in item.collections:
+                if collection_id not in collection_ids:
+                    issues.append(f"Item {item.id} references non-existent collection: {collection_id}")
+        
+        return issues

@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "total_collections": 4,
+    "root_collections": 4,
+    "generated_at": "2025-09-16T15:01:05.357820",
+    "version": "1.0"
+  },
+  "collections": {
+    "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125": {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125",
+      "title": "2 - Technical Robustness and Safety",
+      "itemCount": 4,
+      "itemIds": [
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5931",
+        "https://doi.org/10.1109/ITSC55140.2022.9921776",
+        "https://openreview.net/forum?id=ZjN2AuXgu1",
+        "http://arxiv.org/abs/1809.04843"
+      ]
+    },
+    "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127": {
+      "id": "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127",
+      "title": "4 - Transparency",
+      "itemCount": 13,
+      "itemIds": [
+        "http://arxiv.org/abs/1910.10045",
+        "http://arxiv.org/abs/1806.00069",
+        "http://arxiv.org/abs/1802.01933",
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5663",
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5684",
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5714",
+        "https://www.aclweb.org/anthology/W19-8403",
+        "urn:isbn:978-1-4503-4232-2",
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5665",
+        "urn:isbn:978-1-4503-5971-9",
+        "urn:isbn:978-1-4503-7516-0",
+        "urn:isbn:978-1-4503-8096-6",
+        "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#item_5704"
+      ]
+    },
+    "urn:issn:2169-3536": {
+      "id": "urn:issn:2169-3536",
+      "title": "IEEE Access",
+      "itemCount": 0
+    },
+    "urn:issn:1939-3520": {
+      "id": "urn:issn:1939-3520",
+      "title": "IEEE Transactions on Software Engineering",
+      "itemCount": 0
+    }
+  },
+  "tree": [
+    "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_125",
+    "file:///Users/helge/src/ai4ccam/bibviewer/sample.rdf#collection_127",
+    "urn:issn:2169-3536",
+    "urn:issn:1939-3520"
+  ]
+}

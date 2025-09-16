@@ -20,6 +20,16 @@ class RDFParsingError(Exception):
     pass
 
 
+class RDFValidationError(RDFParsingError):
+    """Exception raised when RDF validation fails."""
+    pass
+
+
+class RDFDataIntegrityError(RDFParsingError):
+    """Exception raised when RDF data integrity checks fail."""
+    pass
+
+
 class RDFParser:
     """Parser for Zotero RDF exports."""
     
@@ -39,11 +49,29 @@ class RDFParser:
             
         Raises:
             RDFParsingError: If the file cannot be parsed
+            RDFValidationError: If the file format is invalid
         """
         try:
             file_path = Path(file_path)
+            
+            # Validate file existence and accessibility
             if not file_path.exists():
                 raise RDFParsingError(f"RDF file not found: {file_path}")
+            
+            if not file_path.is_file():
+                raise RDFParsingError(f"Path is not a file: {file_path}")
+            
+            # Check file size (warn about very large files)
+            file_size = file_path.stat().st_size
+            if file_size == 0:
+                raise RDFValidationError(f"RDF file is empty: {file_path}")
+            
+            if file_size > 100 * 1024 * 1024:  # 100MB
+                self.logger.warning(f"Large RDF file detected ({file_size / 1024 / 1024:.1f}MB): {file_path}")
+            
+            # Check file permissions
+            if not file_path.stat().st_mode & 0o444:  # Check read permission
+                raise RDFParsingError(f"No read permission for RDF file: {file_path}")
                 
             self.graph = Graph()
             
@@ -57,16 +85,38 @@ class RDFParser:
             self.graph.bind("vcard", VCARD)
             self.graph.bind("prism", PRISM)
             
-            # Parse the RDF file
-            self.graph.parse(file_path, format="xml")
+            # Parse the RDF file with enhanced error handling
+            try:
+                self.graph.parse(file_path, format="xml")
+            except Exception as parse_error:
+                # Try to provide more specific error information
+                error_msg = str(parse_error).lower()
+                if "xml" in error_msg and ("malformed" in error_msg or "syntax" in error_msg):
+                    raise RDFValidationError(f"Malformed XML in RDF file {file_path}: {str(parse_error)}")
+                elif "encoding" in error_msg:
+                    raise RDFValidationError(f"Encoding error in RDF file {file_path}: {str(parse_error)}")
+                elif "namespace" in error_msg:
+                    raise RDFValidationError(f"Namespace error in RDF file {file_path}: {str(parse_error)}")
+                else:
+                    raise RDFParsingError(f"Failed to parse RDF file {file_path}: {str(parse_error)}")
+            
+            # Validate the parsed graph
+            self._validate_parsed_graph(file_path)
             
             self.logger.info(f"Successfully parsed RDF file: {file_path}")
             self.logger.info(f"Graph contains {len(self.graph)} triples")
             
             return self.graph
             
+        except (RDFParsingError, RDFValidationError):
+            # Re-raise our custom exceptions
+            raise
+        except PermissionError as e:
+            raise RDFParsingError(f"Permission denied accessing RDF file {file_path}: {str(e)}")
+        except FileNotFoundError as e:
+            raise RDFParsingError(f"RDF file not found {file_path}: {str(e)}")
         except Exception as e:
-            raise RDFParsingError(f"Failed to parse RDF file {file_path}: {str(e)}")
+            raise RDFParsingError(f"Unexpected error parsing RDF file {file_path}: {str(e)}")
     
     def extract_bibliography_items(self, graph: Optional[Graph] = None) -> List[Dict[str, Any]]:
         """
@@ -130,26 +180,28 @@ class RDFParser:
                     items.append(item_data)
                     processed_subjects.add(subject)
             
-            # Finally, look for any subjects that have bibliographic properties but weren't caught above
+            # Finally, look for subjects that have bibliographic properties but weren't caught above
             # This catches rdf:Description elements that represent bibliography items
-            bibliographic_properties = [DC.title, BIB.authors, DCTERMS.isPartOf]
-            
-            for prop in bibliographic_properties:
-                for subject, _, _ in graph.triples((None, prop, None)):
-                    if subject in processed_subjects:
-                        continue
-                        
-                    # Skip attachments and memos
-                    if (subject, RDF.type, Z.Attachment) in graph or \
-                       (subject, RDF.type, BIB.Memo) in graph:
-                        continue
+            # BUT we need to be more selective to avoid collections and venue entities
+            for subject, _, _ in graph.triples((None, BIB.authors, None)):
+                if subject in processed_subjects:
+                    continue
                     
-                    # Check if this looks like a bibliography item (has title)
-                    if graph.value(subject, DC.title):
-                        item_data = self._extract_item_data(graph, subject, "other")
-                        if item_data:
-                            items.append(item_data)
-                            processed_subjects.add(subject)
+                # Skip attachments, memos, collections, and venue entities
+                if (subject, RDF.type, Z.Attachment) in graph or \
+                   (subject, RDF.type, BIB.Memo) in graph or \
+                   (subject, RDF.type, Z.Collection) in graph or \
+                   (subject, RDF.type, BIB.Journal) in graph or \
+                   (subject, RDF.type, BIB.Proceedings) in graph:
+                    continue
+                
+                # Only include if it has authors (strong indicator of bibliography item)
+                # and has a title
+                if graph.value(subject, BIB.authors) and graph.value(subject, DC.title):
+                    item_data = self._extract_item_data(graph, subject, "other")
+                    if item_data:
+                        items.append(item_data)
+                        processed_subjects.add(subject)
             
             self.logger.info(f"Extracted {len(items)} bibliography items")
             return items
@@ -202,6 +254,42 @@ class RDFParser:
             
         except Exception as e:
             raise RDFParsingError(f"Failed to extract collections: {str(e)}")
+    
+    def assign_items_to_collections(
+        self, 
+        items_data: List[Dict[str, Any]], 
+        collections_data: List[Dict[str, Any]]
+    ) -> None:
+        """
+        Assign collection references to bibliography items based on collection data.
+        
+        Args:
+            items_data: List of item dictionaries to update
+            collections_data: List of collection dictionaries with item_ids
+        """
+        try:
+            # Create a mapping from item ID to item data for quick lookup
+            items_by_id = {item["id"]: item for item in items_data}
+            
+            # For each collection, add the collection ID to its items
+            for collection in collections_data:
+                collection_id = collection["id"]
+                for item_id in collection.get("item_ids", []):
+                    if item_id in items_by_id:
+                        # Initialize collections list if it doesn't exist
+                        if "collections" not in items_by_id[item_id]:
+                            items_by_id[item_id]["collections"] = []
+                        
+                        # Add collection ID if not already present
+                        if collection_id not in items_by_id[item_id]["collections"]:
+                            items_by_id[item_id]["collections"].append(collection_id)
+            
+            # Count assignments for logging
+            assigned_count = sum(1 for item in items_data if item.get("collections"))
+            self.logger.info(f"Assigned collection references to {assigned_count} items")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to assign items to collections: {str(e)}")
     
     def _extract_item_data(self, graph: Graph, subject: URIRef, item_type: str) -> Optional[Dict[str, Any]]:
         """Extract data for a single bibliography item."""
@@ -458,3 +546,130 @@ class RDFParser:
         }
         
         return type_mapping.get(item_type, "other")
+    
+    def _validate_parsed_graph(self, file_path: Path) -> None:
+        """
+        Validate the parsed RDF graph for basic integrity.
+        
+        Args:
+            file_path: Path to the RDF file being validated
+            
+        Raises:
+            RDFValidationError: If validation fails
+            RDFDataIntegrityError: If data integrity issues are found
+        """
+        if not self.graph:
+            raise RDFValidationError("No graph data after parsing")
+        
+        if len(self.graph) == 0:
+            raise RDFValidationError(f"RDF file contains no triples: {file_path}")
+        
+        # Check for minimum expected content
+        has_bibliography_items = False
+        has_zotero_namespaces = False
+        
+        # Look for bibliography-related triples
+        for s, p, o in self.graph:
+            predicate_str = str(p)
+            if str(BIB) in predicate_str or str(Z) in predicate_str or str(DC) in predicate_str:
+                has_zotero_namespaces = True
+            
+            # Check for bibliography item indicators
+            if (s, RDF.type, BIB.Article) in self.graph or \
+               (s, RDF.type, BIB.Book) in self.graph or \
+               any(self.graph.triples((None, BIB.authors, None))) or \
+               any(self.graph.triples((None, DC.title, None))):
+                has_bibliography_items = True
+                break
+        
+        if not has_zotero_namespaces:
+            self.logger.warning(f"RDF file may not be a Zotero export (no Zotero namespaces found): {file_path}")
+        
+        if not has_bibliography_items:
+            raise RDFDataIntegrityError(f"No bibliography items found in RDF file: {file_path}")
+        
+        self.logger.debug(f"RDF validation passed for {file_path}")
+    
+    def validate_bibliography_data_integrity(self, items_data: List[Dict[str, Any]]) -> List[str]:
+        """
+        Validate bibliography data for required fields and data integrity.
+        
+        Args:
+            items_data: List of extracted bibliography item dictionaries
+            
+        Returns:
+            List of validation warnings/errors
+        """
+        validation_issues = []
+        
+        if not items_data:
+            validation_issues.append("No bibliography items found")
+            return validation_issues
+        
+        required_fields = ["id", "title"]
+        recommended_fields = ["authors", "year", "type"]
+        
+        items_without_title = 0
+        items_without_authors = 0
+        items_without_year = 0
+        items_with_invalid_year = 0
+        duplicate_ids = set()
+        seen_ids = set()
+        
+        for i, item in enumerate(items_data):
+            item_id = item.get("id", f"item_{i}")
+            
+            # Check for duplicate IDs
+            if item_id in seen_ids:
+                duplicate_ids.add(item_id)
+            seen_ids.add(item_id)
+            
+            # Check required fields
+            for field in required_fields:
+                if not item.get(field):
+                    if field == "title":
+                        items_without_title += 1
+                    validation_issues.append(f"Item {item_id} missing required field: {field}")
+            
+            # Check recommended fields
+            if not item.get("authors"):
+                items_without_authors += 1
+            
+            if not item.get("year"):
+                items_without_year += 1
+            elif item.get("year"):
+                year = item["year"]
+                if not isinstance(year, int) or year < 1000 or year > 2100:
+                    items_with_invalid_year += 1
+                    validation_issues.append(f"Item {item_id} has invalid year: {year}")
+            
+            # Validate author data structure
+            authors = item.get("authors", [])
+            if authors and not isinstance(authors, list):
+                validation_issues.append(f"Item {item_id} has invalid authors data structure")
+            else:
+                for j, author in enumerate(authors):
+                    if not isinstance(author, dict):
+                        validation_issues.append(f"Item {item_id} author {j} is not a dictionary")
+                    elif not author.get("full_name") and not (author.get("given_name") or author.get("surname")):
+                        validation_issues.append(f"Item {item_id} author {j} has no name information")
+        
+        # Summary statistics
+        total_items = len(items_data)
+        
+        if duplicate_ids:
+            validation_issues.append(f"Found {len(duplicate_ids)} duplicate item IDs")
+        
+        if items_without_title > 0:
+            validation_issues.append(f"{items_without_title}/{total_items} items missing titles")
+        
+        if items_without_authors > total_items * 0.1:  # More than 10% missing authors
+            validation_issues.append(f"{items_without_authors}/{total_items} items missing authors (>{items_without_authors/total_items*100:.1f}%)")
+        
+        if items_without_year > total_items * 0.2:  # More than 20% missing years
+            validation_issues.append(f"{items_without_year}/{total_items} items missing publication year (>{items_without_year/total_items*100:.1f}%)")
+        
+        if items_with_invalid_year > 0:
+            validation_issues.append(f"{items_with_invalid_year}/{total_items} items have invalid years")
+        
+        return validation_issues
