@@ -90,10 +90,12 @@ def sample_rdf_data():
     collection1 = URIRef("http://example.org/collection1")
     collection2 = URIRef("http://example.org/collection2")
     
+    graph.add((collection1, RDF.type, Z.Collection))
     graph.add((collection1, DC.title, Literal("Machine Learning")))
     graph.add((collection1, DCTERMS.hasPart, item1))
     graph.add((collection1, DCTERMS.hasPart, item2))
     
+    graph.add((collection2, RDF.type, Z.Collection))
     graph.add((collection2, DC.title, Literal("Healthcare AI")))
     graph.add((collection2, DCTERMS.hasPart, item1))
     

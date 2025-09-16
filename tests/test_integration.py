@@ -151,6 +151,7 @@ class TestBuildPipelineIntegration:
         ]
         
         for col_uri, title, parent_uri, items in collections:
+            graph.add((col_uri, RDF.type, Z.Collection))
             graph.add((col_uri, DC.title, Literal(title)))
             for item in items:
                 graph.add((col_uri, DCTERMS.hasPart, item))
@@ -263,6 +264,7 @@ class TestBuildPipelineIntegration:
         # Create 10 collections, each with 10 items
         for i in range(10):
             collection = URIRef(f"http://example.org/collection{i}")
+            graph.add((collection, RDF.type, Z.Collection))
             graph.add((collection, DC.title, Literal(f"Collection {i}")))
             
             # Add 10 items to each collection
