@@ -3,7 +3,7 @@
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any
-from rdflib import Graph, Namespace, URIRef, Literal
+from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import RDF, DC, DCTERMS, FOAF
 
 
@@ -477,7 +477,7 @@ class RDFParser:
         """Extract attachment information."""
         try:
             # Check if this is actually an attachment
-            if not (attachment_node, RDF.type, Z.Attachment) in graph:
+            if (attachment_node, RDF.type, Z.Attachment) not in graph:
                 return None
             
             attachment_data = {

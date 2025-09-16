@@ -1,9 +1,6 @@
 """Tests for web interface functionality using browser automation."""
 
-import pytest
 import json
-import time
-from pathlib import Path
 from zotero_webviewer.build_pipeline import BuildPipeline, BuildConfig
 
 

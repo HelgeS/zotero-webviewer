@@ -27,10 +27,10 @@ def main():
     try:
         with socketserver.TCPServer(("", PORT), Handler) as httpd:
             url = f"http://localhost:{PORT}"
-            print(f"✅ Literature Webviewer server started!")
+            print("✅ Literature Webviewer server started!")
             print(f"🌐 Open in browser: {url}")
             print(f"📁 Serving from: {output_dir}")
-            print(f"⏹️  Press Ctrl+C to stop")
+            print("⏹️  Press Ctrl+C to stop")
             print()
             
             # Try to open browser automatically
@@ -49,7 +49,7 @@ def main():
         if "Address already in use" in str(e):
             print(f"❌ Port {PORT} is already in use.")
             print(f"💡 Try opening http://localhost:{PORT} in your browser")
-            print(f"💡 Or stop the existing server and run this script again")
+            print("💡 Or stop the existing server and run this script again")
         else:
             print(f"❌ Error starting server: {e}")
         sys.exit(1)

@@ -1,7 +1,6 @@
 """Unit tests for RDF parser functionality."""
 
 import pytest
-from pathlib import Path
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, DC
 

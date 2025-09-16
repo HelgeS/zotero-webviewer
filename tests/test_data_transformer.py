@@ -9,8 +9,7 @@ from zotero_webviewer.data_transformer import (
     Attachment,
     ItemType,
     DataTransformationError,
-    DataValidationError,
-    DataIntegrityError
+    DataValidationError
 )
 
 

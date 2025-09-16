@@ -1,10 +1,8 @@
 """Command-line interface for the literature webviewer."""
 
-import sys
 import time
 import logging
 from pathlib import Path
-from typing import Optional
 from datetime import datetime
 
 import click
@@ -12,7 +10,7 @@ import click
 from .rdf_parser import RDFParser, RDFParsingError, RDFValidationError, RDFDataIntegrityError
 from .data_transformer import DataTransformer, DataTransformationError, DataValidationError, DataIntegrityError
 from .collection_builder import CollectionHierarchyBuilder, CollectionHierarchyError
-from .json_generator import JSONGenerator, JSONGenerationError
+from .json_generator import JSONGenerator
 from .build_pipeline import BuildPipeline, BuildConfig, BuildPipelineError
 
 
@@ -33,7 +31,7 @@ def validate_input_file(input_path: str) -> Path:
         raise click.ClickException(f"Input file does not exist: {input_path}")
     if not path.is_file():
         raise click.ClickException(f"Input path is not a file: {input_path}")
-    if not path.suffix.lower() in ['.rdf', '.xml']:
+    if path.suffix.lower() not in ['.rdf', '.xml']:
         click.echo(f"Warning: Input file '{input_path}' does not have .rdf or .xml extension", err=True)
     return path
 
@@ -182,7 +180,7 @@ def validate_rdf(ctx, input, comprehensive):
         items_data = parser.extract_bibliography_items(graph)
         collections_data = parser.extract_collections(graph)
         
-        click.echo(f"✓ RDF file is valid")
+        click.echo("✓ RDF file is valid")
         click.echo(f"  Found {len(items_data)} bibliography items")
         click.echo(f"  Found {len(collections_data)} collections")
         click.echo(f"  Total RDF triples: {len(graph)}")

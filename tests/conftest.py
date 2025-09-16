@@ -4,11 +4,10 @@ import pytest
 import tempfile
 import shutil
 from pathlib import Path
-from typing import Dict, Any, List
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF, DC, DCTERMS, FOAF
 
-from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author, Attachment, ItemType
+from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author, ItemType
 
 
 # Define Zotero-specific namespaces for test data

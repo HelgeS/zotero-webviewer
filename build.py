@@ -118,7 +118,7 @@ Examples:
         cmd.append('--validate')
     
     # Print build information
-    print(f"Building Literature Webviewer...")
+    print("Building Literature Webviewer...")
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")
     print(f"Production: {'Yes' if args.production else 'No'}")
@@ -127,7 +127,7 @@ Examples:
     # Run build command
     try:
         result = subprocess.run(cmd, check=True)
-        print(f"\n✓ Build completed successfully!")
+        print("\n✓ Build completed successfully!")
         print(f"Website generated in: {args.output}")
         
         if args.production:
@@ -137,7 +137,7 @@ Examples:
             print("- Gzip versions created")
             print("- GitHub Pages configuration added")
         
-        print(f"\nTo view your site:")
+        print("\nTo view your site:")
         print(f"1. Open {args.output}/index.html in a web browser")
         print(f"2. Or serve with: python -m http.server -d {args.output}")
         

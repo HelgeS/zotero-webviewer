@@ -5,7 +5,7 @@ from zotero_webviewer.collection_builder import (
     CollectionHierarchyBuilder,
     CollectionHierarchyError
 )
-from zotero_webviewer.data_transformer import Collection, BibliographyItem, ItemType
+from zotero_webviewer.data_transformer import Collection, BibliographyItem
 
 
 class TestCollectionHierarchyBuilder:

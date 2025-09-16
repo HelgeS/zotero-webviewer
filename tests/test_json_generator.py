@@ -1,13 +1,11 @@
 """Unit tests for JSON generation functionality."""
 
 import json
-import pytest
 from pathlib import Path
 from zotero_webviewer.json_generator import (
-    JSONGenerator,
-    JSONGenerationError
+    JSONGenerator
 )
-from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author, ItemType
+from zotero_webviewer.data_transformer import BibliographyItem, Collection, Author
 
 
 class TestJSONGenerator:
